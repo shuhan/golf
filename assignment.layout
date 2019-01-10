@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="golf" />
+	<File name="include\allegro\allegro5\utf8.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6268" topLine="125" />
+		</Cursor>
+	</File>
+	<File name="include\allegro\freetype\internal\services\svsfnt.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3357" topLine="77" />
+		</Cursor>
+	</File>
+	<File name="include\allegro\allegro5\platform\astdint.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2201" topLine="14" />
+		</Cursor>
+	</File>
+	<File name="include\allegro\allegro5\allegro_windows.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="972" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="include\allegro\freetype\internal\ftstream.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23253" topLine="514" />
+		</Cursor>
+	</File>
+	<File name="src\allegro_examples\ex_ttf.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5983" topLine="172" />
+		</Cursor>
+	</File>
+	<File name="include\allegro\freetype\ftmm.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="22712" topLine="353" />
+		</Cursor>
+	</File>
+	<File name="include\graphics_lib.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\allegro\allegro5\joystick.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2866" topLine="65" />
+		</Cursor>
+	</File>
+	<File name="src\assignment.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5813" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\allegro\allegro5\internal\aintern_joystick.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2327" topLine="64" />
+		</Cursor>
+	</File>
+	<File name="include\allegro\freetype\ftcache.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="60826" topLine="1115" />
+		</Cursor>
+	</File>
+	<File name="include\graphics_lib_functions.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>
