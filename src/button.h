@@ -5,12 +5,15 @@
 
 typedef struct {
 
-    POINT   location;
-    char    text[32];
-    long    width;
-    long    height;
-    int     background;
-    int     colour;
+    POINT   location;       //Top left corner of the button
+    char    text[32];       //Button text
+    long    width;          //Width in pixel
+    long    height;         //Height in pixel
+    int     back_colour;    //Background colour
+    int     fore_colour;    //Foreground/Text colour
+    int     hback_colour;   //Highlight (Active state) background colour
+    int     hfore_colour;   //Highlight (Active state) foreground colour
+    int     tab_index;      //Tab or up down button order
 
 } GAMEBUTTON;
 
