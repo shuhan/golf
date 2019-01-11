@@ -1,11 +1,10 @@
 #ifndef BUTTON_H_INCLUDED
 #define BUTTON_H_INCLUDED
 
-#include <graphics_lib.h>
-
 typedef struct {
 
-    POINT   location;       //Top left corner of the button
+    long    top;            //Top corner of the button
+    long    left;           //Left corner of the button
     char    text[32];       //Button text
     long    width;          //Width in pixel
     long    height;         //Height in pixel
@@ -13,8 +12,22 @@ typedef struct {
     int     fore_colour;    //Foreground/Text colour
     int     hback_colour;   //Highlight (Active state) background colour
     int     hfore_colour;   //Highlight (Active state) foreground colour
-    int     tab_index;      //Tab or up down button order
+    void    (*on_click)(GAMEBUTTON);
 
 } GAMEBUTTON;
+
+typedef struct {
+    GAMEBUTTON *buttons;
+    int         button_count;
+    int         tab_position;
+} GAMEMENU;
+
+void gamemenu_paint(GAMEMENU menu);
+
+void gamebutton_paint(GAMEBUTTON button);
+
+void gamemenu_check_key(GAMEMENU menu);
+
+void gamemenu_check_mouse(GAMEMENU menu);
 
 #endif // BUTTON_H_INCLUDED

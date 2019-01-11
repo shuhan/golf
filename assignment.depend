@@ -776,3 +776,269 @@
 	<graphics_lib.h>
 	<amio_lib.h>
 
+1447145718 source:d:\study\c programming for msc\golf\include\amio_lib_functions.c
+	<amio_lib.h>
+
+1447145716 d:\study\c programming for msc\golf\include\amio_lib.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	"sndfile.h"
+	"portaudio.h"
+	"portmidi.h"
+	"porttime.h"
+
+1447145826 d:\study\c programming for msc\golf\include\libsndfile\sndfile.h
+	<stdio.h>
+	<sys/types.h>
+
+1447145828 d:\study\c programming for msc\golf\include\portaudio\portaudio.h
+
+1447145828 d:\study\c programming for msc\golf\include\portmidi\portmidi.h
+	<stdint.h>
+
+1447145830 d:\study\c programming for msc\golf\include\portmidi\porttime.h
+	<stdint.h>
+
+1447145720 source:d:\study\c programming for msc\golf\include\graphics_lib_functions.c
+	<graphics_lib.h>
+
+1447145718 d:\study\c programming for msc\golf\include\graphics_lib.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_font.h>
+	<termios.h>
+	<unistd.h>
+
+1447145964 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro.h
+	"allegro5/base.h"
+	"allegro5/system.h"
+	"allegro5/memory.h"
+	"allegro5/debug.h"
+	"allegro5/error.h"
+	"allegro5/utf8.h"
+	"allegro5/altime.h"
+	"allegro5/events.h"
+	"allegro5/mouse.h"
+	"allegro5/timer.h"
+	"allegro5/keyboard.h"
+	"allegro5/joystick.h"
+	"allegro5/threads.h"
+	"allegro5/display.h"
+	"allegro5/transformations.h"
+	"allegro5/bitmap_io.h"
+	"allegro5/bitmap.h"
+	"allegro5/tls.h"
+	"allegro5/file.h"
+	"allegro5/fshook.h"
+	"allegro5/path.h"
+	"allegro5/fmaths.h"
+	"allegro5/config.h"
+	"allegro5/alcompat.h"
+
+1447145984 d:\study\c programming for msc\golf\include\allegro\allegro5\base.h
+	<errno.h>
+	<limits.h>
+	<limits.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<sys/types.h>
+	<fortify/fortify.h>
+	<dmalloc.h>
+	"allegro5/internal/alconfig.h"
+
+1447146242 d:\study\c programming for msc\golf\include\allegro\allegro5\internal\alconfig.h
+	"allegro5/platform/alplatf.h"
+	"allegro5/platform/aldjgpp.h"
+	"allegro5/platform/alwatcom.h"
+	"allegro5/platform/almngw32.h"
+	"allegro5/platform/aldmc.h"
+	"allegro5/platform/albcc32.h"
+	"allegro5/platform/almsvc.h"
+	"allegro5/platform/albecfg.h"
+	"allegro5/platform/aliphonecfg.h"
+	"allegro5/platform/alosxcfg.h"
+	"allegro5/platform/alqnxcfg.h"
+	"allegro5/platform/alwizcfg.h"
+	"allegro5/platform/alucfg.h"
+	"allegro5/platform/astdint.h"
+	"allegro5/platform/astdbool.h"
+
+1447146266 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\alplatf.h
+
+1447146270 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\alwatcom.h
+	<io.h>
+	<i86.h>
+	<conio.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1447146262 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\almngw32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1447146258 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\aldmc.h
+	<io.h>
+	<fcntl.h>
+	<stdint.h>
+
+1447146258 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\albcc32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1447146262 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\almsvc.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1447146260 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\aliphonecfg.h
+	<fcntl.h>
+	<unistd.h>
+
+1447146264 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\alosxcfg.h
+	"allegro5/platform/alplatf.h"
+
+1447146272 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\alwizcfg.h
+	<fcntl.h>
+	<unistd.h>
+	"allegro5/platform/alplatf.h"
+
+1447146268 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\alucfg.h
+	<fcntl.h>
+	<unistd.h>
+	"alunix.h"
+	"allegro5/platform/alplatf.h"
+
+1447146268 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\alunix.h
+
+1447146274 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\astdint.h
+	<inttypes.h>
+	<stdint.h>
+
+1447146274 d:\study\c programming for msc\golf\include\allegro\allegro5\platform\astdbool.h
+	<stdbool.h>
+
+1447146004 d:\study\c programming for msc\golf\include\allegro\allegro5\system.h
+	"allegro5/config.h"
+	"allegro5/path.h"
+
+1447145988 d:\study\c programming for msc\golf\include\allegro\allegro5\config.h
+	"allegro5/file.h"
+
+1447145994 d:\study\c programming for msc\golf\include\allegro\allegro5\file.h
+	"allegro5/base.h"
+	"allegro5/path.h"
+	"allegro5/utf8.h"
+
+1447146004 d:\study\c programming for msc\golf\include\allegro\allegro5\path.h
+	"allegro5/base.h"
+
+1547142456 d:\study\c programming for msc\golf\include\allegro\allegro5\utf8.h
+	"allegro5/base.h"
+
+1447146002 d:\study\c programming for msc\golf\include\allegro\allegro5\memory.h
+
+1447145988 d:\study\c programming for msc\golf\include\allegro\allegro5\debug.h
+	<assert.h>
+	"allegro5/base.h"
+
+1447145990 d:\study\c programming for msc\golf\include\allegro\allegro5\error.h
+	"allegro5/base.h"
+
+1447145982 d:\study\c programming for msc\golf\include\allegro\allegro5\altime.h
+	"allegro5/base.h"
+
+1447145992 d:\study\c programming for msc\golf\include\allegro\allegro5\events.h
+	"allegro5/base.h"
+
+1447146002 d:\study\c programming for msc\golf\include\allegro\allegro5\mouse.h
+	"allegro5/base.h"
+
+1447146006 d:\study\c programming for msc\golf\include\allegro\allegro5\timer.h
+	"allegro5/base.h"
+
+1447145998 d:\study\c programming for msc\golf\include\allegro\allegro5\keyboard.h
+	"allegro5/base.h"
+	"allegro5/keycodes.h"
+
+1447146000 d:\study\c programming for msc\golf\include\allegro\allegro5\keycodes.h
+
+1547142451 d:\study\c programming for msc\golf\include\allegro\allegro5\joystick.h
+	"allegro5/base.h"
+
+1447146006 d:\study\c programming for msc\golf\include\allegro\allegro5\threads.h
+	"allegro5/altime.h"
+
+1447145990 d:\study\c programming for msc\golf\include\allegro\allegro5\display.h
+	"allegro5/color.h"
+	"allegro5/bitmap.h"
+
+1447145986 d:\study\c programming for msc\golf\include\allegro\allegro5\color.h
+
+1447145984 d:\study\c programming for msc\golf\include\allegro\allegro5\bitmap.h
+	"allegro5/color.h"
+
+1447146008 d:\study\c programming for msc\golf\include\allegro\allegro5\transformations.h
+
+1447145986 d:\study\c programming for msc\golf\include\allegro\allegro5\bitmap_io.h
+	"allegro5/bitmap.h"
+	"allegro5/file.h"
+
+1447146008 d:\study\c programming for msc\golf\include\allegro\allegro5\tls.h
+	"allegro5/base.h"
+
+1447145996 d:\study\c programming for msc\golf\include\allegro\allegro5\fshook.h
+	"allegro5/base.h"
+	"allegro5/path.h"
+	<sys/types.h>
+
+1447145996 d:\study\c programming for msc\golf\include\allegro\allegro5\fmaths.h
+	"allegro5/base.h"
+	"allegro5/fixed.h"
+	"allegro5/inline/fmaths.inl"
+
+1447145994 d:\study\c programming for msc\golf\include\allegro\allegro5\fixed.h
+	"allegro5/base.h"
+
+1447146194 d:\study\c programming for msc\golf\include\allegro\allegro5\inline\fmaths.inl
+
+1447145962 d:\study\c programming for msc\golf\include\allegro\allegro5\alcompat.h
+
+1447145978 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_primitives.h
+	<allegro5/allegro.h>
+
+1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_image.h
+
+1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
+	"allegro5/allegro.h"
+
+1547236058 source:d:\study\c programming for msc\golf\src\assignment.c
+	<graphics_lib.h>
+	<amio_lib.h>
+	"common.h"
+	"button.h"
+
+1547236576 d:\study\c programming for msc\golf\src\common.h
+
+1547235718 d:\study\c programming for msc\golf\src\button.h
+
+1547236718 source:d:\study\c programming for msc\golf\src\button.c
+	"button.h"
+
