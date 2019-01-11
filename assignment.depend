@@ -1029,7 +1029,7 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1547236058 source:d:\study\c programming for msc\golf\src\assignment.c
+1547240610 source:d:\study\c programming for msc\golf\src\assignment.c
 	<graphics_lib.h>
 	<amio_lib.h>
 	"common.h"
@@ -1037,8 +1037,13 @@
 
 1547236576 d:\study\c programming for msc\golf\src\common.h
 
-1547235718 d:\study\c programming for msc\golf\src\button.h
+1547241934 d:\study\c programming for msc\golf\src\button.h
 
-1547236718 source:d:\study\c programming for msc\golf\src\button.c
+1547241949 source:d:\study\c programming for msc\golf\src\button.c
 	"button.h"
+	<graphics_lib.h>
+
+1547236789 source:d:\study\c programming for msc\golf\src\common.c
+	"common.h"
+	<graphics_lib.h>
 

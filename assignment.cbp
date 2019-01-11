@@ -855,7 +855,14 @@
 		<Unit filename="src/assignment.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/button.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/button.h" />
+		<Unit filename="src/common.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
