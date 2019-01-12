@@ -852,6 +852,10 @@
 		<Unit filename="src/allegro_examples/nihgui.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="src/animation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/animation.h" />
 		<Unit filename="src/assignment.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -859,10 +863,18 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/button.h" />
+		<Unit filename="src/cloud.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/cloud.h" />
 		<Unit filename="src/common.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/common.h" />
+		<Unit filename="src/player.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/player.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -4,8 +4,23 @@
 
 #include "common.h"
 #include "button.h"
+#include "cloud.h"
+#include "weather.h"
+#include "animation.h"
+#include "ground.h"
 
 void print_x(GAMEBUTTON x);
+void test_hit(void);
+
+ANIMATIONFRAME frames[4] = {
+    {"data/res/0.png", 0, 0, 0},
+    {"data/res/1.png", 0, 0, 0},
+    {"data/res/2.png", 0, 0, 1},
+    {"data/res/3.png", 0, 0, 0}};
+
+ANIMATIONCLIP clip = {
+    600, HEIGHT - 200, frames, 4, 0.05, 0, 0
+};
 
 int main(void) {
 
@@ -16,6 +31,9 @@ int main(void) {
     create_event_queue();
     reg_keyboard_events();
     reg_mouse_events();
+
+    gameweather_init();
+    cloud_init(WIDTH);
 
     cleardevice();
 
@@ -39,36 +57,66 @@ int main(void) {
     menu.buttons        = buttons;
     menu.button_count   = 1;
 
+    CLOUD cloud = { 400, 200, 50, 1.5 };
+
+    GROUND ground = {WIDTH, HEIGHT, (HEIGHT * 2) / 3, (HEIGHT * 3) / 4 };
+
+    char bitmap_path[300] = "data/res/win.png";
+
+    BITMAP bmp = load_bitmap(bitmap_path);
+
+    clip.on_activation = test_hit;
+    animation_init(&clip);
+
     while(true) {
 
         cleardevice();
 
         //Wait for mouse event
-        wait_for_event();
+        //Use allegro function directly as there is no reliable function in the wrapper
+        al_wait_for_event_timed(event_queue, &event, 0.00);
+
+        ground_paint(ground);
+
+        draw_bitmap(bmp, 200, HEIGHT - 200);
+
+        animation_update(&clip);
+
+        animation_paint(&clip);
+
         //Process mouse event
         gamemenu_check_mouse(menu);
 
         gamemenu_paint(menu);
 
+        cloud_influence(&cloud, gameweather_now(), 0.1);
+
+        cloud_paint(cloud);
+
         update_display();
 
         //Pause for must be fairly small otherwise we will miss events
-        pausefor(10);
+        pausefor(1);
 
-        //Wait for keyboard event
-        wait_for_event();
-
-        if(event_key_down_arrow()) {
+        if(event_key('x')) {
             break;
         }
     }
 
+    animation_destroy(&clip);
+    destroy_bitmap(bmp);
     closekeyboard();
     closegraph();
 
     return 0;
 }
 
+void test_hit(void) {
+    printf("Ball Hit\n");
+}
+
 void print_x(GAMEBUTTON x) {
     printf("Name of X is %s\n", x.text);
+    animation_reset(&clip);
+    clip.play = 1;
 }

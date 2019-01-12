@@ -25,7 +25,9 @@ void gamemenu_paint(GAMEMENU menu) {
 
     /*
         Shall have additional paint events as well to prepare the menu
+        There shall be some fixed drawing logics at the moment
     */
+    setbkcolor(LIGHTBLUE);
 
     int i;
 
@@ -51,13 +53,18 @@ void gamemenu_check_mouse(GAMEMENU menu) {
         if(gamebutton_mousein(menu.buttons[i])) {
             menu.buttons[i].highlight = 1;
 
-            //If mouse button is down, fire the click event
-            if(event_mouse_left_button_down()) {
-                menu.buttons[i].on_click(menu.buttons[i]);
+            if(event_mouse_left_button_down()) {                //If mouse button is down, fire the click event
+                mouse_state++;                                  //Event is fired on mouse down and up, there fore keep count to make sure a down and up is required for a click
+                if(mouse_state >= 2) {
+                    if(menu.buttons[i].on_click) menu.buttons[i].on_click(menu.buttons[i]);
+                    mouse_state = 0;                            //Reset mouse state once click is counted
+                }
+                event.mouse.button = 0;                         //Nasty hack stop event from sticking
             }
 
         } else {
             menu.buttons[i].highlight = 0;
+            mouse_state = 0;                                    //Reset mouse state so that a mouse down and up require on the same button to be counted as a click
         }
     }
 }

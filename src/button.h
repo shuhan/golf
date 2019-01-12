@@ -1,6 +1,8 @@
 #ifndef BUTTON_H_INCLUDED
 #define BUTTON_H_INCLUDED
 
+int mouse_state;                        //Mouse event fires on down and up, a click is down followed by up
+
 typedef struct {
 
     long    top;                        //Top corner of the button
@@ -14,7 +16,6 @@ typedef struct {
     int     hfore_colour;               //Highlight (Active state) foreground colour
     void    (*on_click)(GAMEBUTTON);    //On click event
     char    highlight;                  //If it shall be highlighted
-
 } GAMEBUTTON;
 
 typedef struct {

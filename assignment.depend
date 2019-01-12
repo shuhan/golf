@@ -804,7 +804,7 @@
 1447145720 source:d:\study\c programming for msc\golf\include\graphics_lib_functions.c
 	<graphics_lib.h>
 
-1447145718 d:\study\c programming for msc\golf\include\graphics_lib.h
+1547323116 d:\study\c programming for msc\golf\include\graphics_lib.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -1029,21 +1029,55 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1547240610 source:d:\study\c programming for msc\golf\src\assignment.c
+1547330816 source:d:\study\c programming for msc\golf\src\assignment.c
 	<graphics_lib.h>
 	<amio_lib.h>
 	"common.h"
 	"button.h"
+	"cloud.h"
+	"weather.h"
+	"animation.h"
+	"ground.h"
 
 1547236576 d:\study\c programming for msc\golf\src\common.h
 
-1547241934 d:\study\c programming for msc\golf\src\button.h
+1547314101 d:\study\c programming for msc\golf\src\button.h
 
-1547241949 source:d:\study\c programming for msc\golf\src\button.c
+1547323004 source:d:\study\c programming for msc\golf\src\button.c
 	"button.h"
 	<graphics_lib.h>
 
 1547236789 source:d:\study\c programming for msc\golf\src\common.c
 	"common.h"
 	<graphics_lib.h>
+
+1547329979 source:d:\study\c programming for msc\golf\src\animation.c
+	"animation.h"
+	<graphics_lib.h>
+
+1547325652 d:\study\c programming for msc\golf\src\animation.h
+	<graphics_lib.h>
+
+1547317829 source:d:\study\c programming for msc\golf\src\cloud.c
+	"cloud.h"
+	<graphics_lib.h>
+
+1547317773 d:\study\c programming for msc\golf\src\cloud.h
+	"weather.h"
+
+1547256313 source:d:\study\c programming for msc\golf\src\player.c
+	"player.h"
+
+1547257269 d:\study\c programming for msc\golf\src\player.h
+
+1547330981 source:d:\study\c programming for msc\golf\src\weather.c
+	"weather.h"
+
+1547330971 d:\study\c programming for msc\golf\src\weather.h
+
+1547330873 d:\study\c programming for msc\golf\src\ground.h
+
+1547330890 source:d:\study\c programming for msc\golf\src\ground.c
+	"ground.h"
+	"graphics_lib.h"
 

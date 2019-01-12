@@ -12,7 +12,8 @@
 
    Updates: Bitmap handling added on 29/4/2013
 */
-
+#ifndef GRAPHICSLIB_H_INCLUDED
+#define GRAPHICSLIB_H_INCLUDED
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -190,3 +191,4 @@ void destroy_bitmap(BITMAP image);
 int getch(); //getch() alternative for Unix based systems
 #endif
 
+#endif
