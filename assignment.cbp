@@ -859,6 +859,10 @@
 		<Unit filename="src/assignment.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/ball.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ball.h" />
 		<Unit filename="src/button.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -871,10 +875,22 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/common.h" />
+		<Unit filename="src/ground.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ground.h" />
+		<Unit filename="src/meters.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/meters.h" />
 		<Unit filename="src/player.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/player.h" />
+		<Unit filename="src/weather.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/weather.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
