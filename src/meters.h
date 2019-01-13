@@ -6,19 +6,23 @@ typedef struct {
     int     left;
     int     top;
     int     size;
-    int     min_reading;
-    int     max_reading;
+    float   min_reading;
+    float   max_reading;
     int     colour;
     int     highlight_colour;
     float   speed_factor;
-    int     current_reading;
+    int     width;
+    float   current_reading;
     char    selecting;
+    char    direction;
 } METER;
+
+void meter_init(METER *meter);
 
 void meter_update(METER *meter);
 
 void meter_paint_angle(METER meter);
 
-void meter_paint_speed(METER meter);
+void meter_paint_strength(METER meter);
 
 #endif // METERS_H_INCLUDED

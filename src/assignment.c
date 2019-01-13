@@ -8,6 +8,7 @@
 #include "weather.h"
 #include "animation.h"
 #include "ground.h"
+#include "meters.h"
 
 void print_x(GAMEBUTTON x);
 void test_hit(void);
@@ -59,7 +60,7 @@ int main(void) {
 
     CLOUD cloud = { 400, 200, 50, 1.5 };
 
-    GROUND ground = {WIDTH, HEIGHT, (HEIGHT * 2) / 3, (HEIGHT * 3) / 4 };
+    GROUND ground = {WIDTH, HEIGHT, (HEIGHT * 2) / 3, (HEIGHT * 5) / 6 };
 
     char bitmap_path[300] = "data/res/win.png";
 
@@ -67,6 +68,11 @@ int main(void) {
 
     clip.on_activation = test_hit;
     animation_init(&clip);
+
+    METER meter = {800, ground.ground_line, 100, 0, 89, YELLOW, BLACK, 0.1, 20};
+    meter.selecting = 1;
+
+    meter_init(&meter);
 
     while(true) {
 
@@ -92,6 +98,10 @@ int main(void) {
         cloud_influence(&cloud, gameweather_now(), 0.1);
 
         cloud_paint(cloud);
+
+        meter_update(&meter);
+
+        meter_paint_strength(meter);
 
         update_display();
 

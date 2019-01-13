@@ -1029,7 +1029,7 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1547331171 source:d:\study\c programming for msc\golf\src\assignment.c
+1547337489 source:d:\study\c programming for msc\golf\src\assignment.c
 	<graphics_lib.h>
 	<amio_lib.h>
 	"common.h"
@@ -1038,6 +1038,7 @@
 	"weather.h"
 	"animation.h"
 	"ground.h"
+	"meters.h"
 
 1547236576 d:\study\c programming for msc\golf\src\common.h
 
@@ -1080,4 +1081,14 @@
 1547330890 source:d:\study\c programming for msc\golf\src\ground.c
 	"ground.h"
 	"graphics_lib.h"
+
+1547333093 source:d:\study\c programming for msc\golf\src\ball.c
+	"ball.h"
+
+1547333095 d:\study\c programming for msc\golf\src\ball.h
+
+1547338139 source:d:\study\c programming for msc\golf\src\meters.c
+	"meters.h"
+
+1547338137 d:\study\c programming for msc\golf\src\meters.h
 
