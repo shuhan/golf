@@ -8,8 +8,35 @@
 #define WIDTH                   1200
 #define HEIGHT                  675
 
+typedef struct {
+    int x;
+    int y;
+} GAMEPOINT;
+
+typedef struct {
+    GAMEPOINT topleft;
+    GAMEPOINT bottomright;
+} GAMERECT;
+
+typedef struct {
+    GAMEPOINT POINT1;
+    GAMEPOINT POINT2;
+    GAMEPOINT POINT3;
+} GAMETRIANGLE;
+
+typedef struct {
+    GAMEPOINT   centre;
+    int         radius;
+} GAMECIRCLE;
+
 int get_text_width(const char* text);
 
 int get_line_height(void);
+
+void filled_gametriangle(GAMETRIANGLE triangle, unsigned colour);
+
+void filled_gamerect(GAMERECT rect, unsigned colour);
+
+void filled_gamecircle(GAMECIRCLE circle, unsigned colour);
 
 #endif // COMMON_H_INCLUDED

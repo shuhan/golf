@@ -68,6 +68,11 @@ int                 XMOUSE, YMOUSE, ZMOUSE;
 #define LIGHTMAGENTA    13
 #define YELLOW          14
 #define WHITE           15
+#define FOREST          16
+#define GRASS           17
+#define WATER           18
+#define DIRT            19
+#define SAND            20
 
 
 /* prototypes */

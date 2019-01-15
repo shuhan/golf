@@ -151,6 +151,16 @@ COLOUR make_RGB(unsigned colour)
         case YELLOW: result.r = 255; result.g = 255; result.b = 0;
         break;
         case WHITE: result.r = 255; result.g = 255; result.b = 255;
+        break;
+        case FOREST: result.r = 11; result.g = 102; result.b = 35;
+        break;
+        case GRASS: result.r = 86; result.g = 176; result.b = 0;
+        break;
+        case WATER: result.r = 20; result.g = 195; result.b = 230;
+        break;
+        case DIRT: result.r = 155; result.g = 118; result.b = 83;
+        break;
+        case SAND: result.r = 234; result.g = 227; result.b = 209;
     }
     return result;
 }

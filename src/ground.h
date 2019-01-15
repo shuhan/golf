@@ -1,6 +1,8 @@
 #ifndef GROUND_H_INCLUDED
 #define GROUND_H_INCLUDED
 
+#include "ball.h"
+
 typedef struct {
     int width;
     int height;
@@ -9,6 +11,8 @@ typedef struct {
 
 } GROUND;
 
-void ground_paint(GROUND ground);
+void ground_paint(GROUND *ground);
+
+int ground_hit(GROUND ground, BALL *ball);
 
 #endif // GROUND_H_INCLUDED

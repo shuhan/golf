@@ -3,12 +3,17 @@
 #include <amio_lib.h>
 
 #include "common.h"
+#include "ball.h"
 #include "button.h"
 #include "cloud.h"
 #include "weather.h"
 #include "animation.h"
 #include "ground.h"
 #include "meters.h"
+#include "tree.h"
+#include "lake.h"
+#include "dune.h"
+#include "hill.h"
 
 void print_x(GAMEBUTTON x);
 void test_hit(void);
@@ -74,6 +79,10 @@ int main(void) {
 
     meter_init(&meter);
 
+    TREE tree = {600, ground.ground_line, 30};
+    DUNE dune = { 900, ground.ground_line, 150, 75 };
+    HILL hill = {800, ground.ground_line, 250, 350, 0.3 };
+
     while(true) {
 
         cleardevice();
@@ -82,7 +91,11 @@ int main(void) {
         //Use allegro function directly as there is no reliable function in the wrapper
         al_wait_for_event_timed(event_queue, &event, 0.00);
 
-        ground_paint(ground);
+        ground_paint(&ground);
+
+        hill_paint(&hill);
+
+        tree_paint(&tree);
 
         draw_bitmap(bmp, 200, HEIGHT - 200);
 

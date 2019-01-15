@@ -801,10 +801,10 @@
 1447145830 d:\study\c programming for msc\golf\include\portmidi\porttime.h
 	<stdint.h>
 
-1447145720 source:d:\study\c programming for msc\golf\include\graphics_lib_functions.c
+1547510791 source:d:\study\c programming for msc\golf\include\graphics_lib_functions.c
 	<graphics_lib.h>
 
-1547323116 d:\study\c programming for msc\golf\include\graphics_lib.h
+1547510726 d:\study\c programming for msc\golf\include\graphics_lib.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -1029,18 +1029,23 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1547337489 source:d:\study\c programming for msc\golf\src\assignment.c
+1547519209 source:d:\study\c programming for msc\golf\src\assignment.c
 	<graphics_lib.h>
 	<amio_lib.h>
 	"common.h"
+	"ball.h"
 	"button.h"
 	"cloud.h"
 	"weather.h"
 	"animation.h"
 	"ground.h"
 	"meters.h"
+	"tree.h"
+	"lake.h"
+	"dune.h"
+	"hill.h"
 
-1547236576 d:\study\c programming for msc\golf\src\common.h
+1547518845 d:\study\c programming for msc\golf\src\common.h
 
 1547314101 d:\study\c programming for msc\golf\src\button.h
 
@@ -1048,7 +1053,7 @@
 	"button.h"
 	<graphics_lib.h>
 
-1547236789 source:d:\study\c programming for msc\golf\src\common.c
+1547518941 source:d:\study\c programming for msc\golf\src\common.c
 	"common.h"
 	<graphics_lib.h>
 
@@ -1076,19 +1081,51 @@
 
 1547330971 d:\study\c programming for msc\golf\src\weather.h
 
-1547330873 d:\study\c programming for msc\golf\src\ground.h
+1547521621 d:\study\c programming for msc\golf\src\ground.h
+	"ball.h"
 
-1547330890 source:d:\study\c programming for msc\golf\src\ground.c
+1547521532 source:d:\study\c programming for msc\golf\src\ground.c
 	"ground.h"
 	"graphics_lib.h"
 
 1547333093 source:d:\study\c programming for msc\golf\src\ball.c
 	"ball.h"
 
-1547333095 d:\study\c programming for msc\golf\src\ball.h
+1547521314 d:\study\c programming for msc\golf\src\ball.h
+	"common.h"
 
 1547338139 source:d:\study\c programming for msc\golf\src\meters.c
 	"meters.h"
 
 1547338137 d:\study\c programming for msc\golf\src\meters.h
+
+1547521532 source:d:\study\c programming for msc\golf\src\hill.c
+	"hill.h"
+	<graphics_lib.h>
+
+1547521629 d:\study\c programming for msc\golf\src\hill.h
+	"common.h"
+	"ball.h"
+
+1547521641 d:\study\c programming for msc\golf\src\tree.h
+	"common.h"
+	"ball.h"
+
+1547513647 source:d:\study\c programming for msc\golf\src\lake.c
+	"lake.h"
+	<graphics_lib.h>
+
+1547521632 d:\study\c programming for msc\golf\src\lake.h
+	"ball.h"
+
+1547521532 source:d:\study\c programming for msc\golf\src\tree.c
+	"tree.h"
+	<graphics_lib.h>
+
+1547521438 source:d:\study\c programming for msc\golf\src\dune.c
+	"dune.h"
+	<graphics_lib.h>
+
+1547521617 d:\study\c programming for msc\golf\src\dune.h
+	"ball.h"
 
