@@ -39,4 +39,12 @@ void filled_gamerect(GAMERECT rect, unsigned colour);
 
 void filled_gamecircle(GAMECIRCLE circle, unsigned colour);
 
+int sign(GAMEPOINT p1, GAMEPOINT p2, GAMEPOINT p3);
+
+int hit_gametriangle(GAMETRIANGLE triangle, GAMECIRCLE circle);
+
+int hit_gamerect(GAMERECT rect, GAMECIRCLE circle);
+
+int hit_gamecircle(GAMECIRCLE cir, GAMECIRCLE circle);
+
 #endif // COMMON_H_INCLUDED

@@ -7,5 +7,5 @@ void ground_paint(GROUND *ground) {
 }
 
 int ground_hit(GROUND ground, BALL *ball) {
-
+    return ball->shape.centre.y + ball->shape.radius >= ground.ground_line;
 }

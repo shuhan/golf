@@ -887,6 +887,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/hill.h" />
+		<Unit filename="src/hole.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/hole.h" />
 		<Unit filename="src/lake.c">
 			<Option compilerVar="CC" />
 		</Unit>

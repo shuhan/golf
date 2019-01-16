@@ -47,5 +47,17 @@ void tree_paint(TREE *tree) {
 }
 
 int tree_hit(TREE tree, BALL *ball) {
+    if(hit_gamerect(tree.stamp, ball->shape)) {
+        return 1;
+    }
 
+    int i;
+    for(i = 0; i < 8; i++) {
+        if(hit_gamecircle(tree.leaves[i], ball->shape)) {
+            ball->lost = 1;
+            return 1;
+        }
+    }
+
+    return 0;
 }

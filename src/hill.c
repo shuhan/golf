@@ -19,5 +19,5 @@ void hill_paint(HILL *hill) {
 }
 
 int hill_hit(HILL hill, BALL *ball) {
-
+    return hit_gametriangle(hill.peaks[0], ball->shape) || hit_gametriangle(hill.peaks[1], ball->shape);
 }

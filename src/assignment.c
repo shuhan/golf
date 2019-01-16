@@ -14,6 +14,7 @@
 #include "lake.h"
 #include "dune.h"
 #include "hill.h"
+#include "hole.h"
 
 void print_x(GAMEBUTTON x);
 void test_hit(void);
@@ -82,6 +83,7 @@ int main(void) {
     TREE tree = {600, ground.ground_line, 30};
     DUNE dune = { 900, ground.ground_line, 150, 75 };
     HILL hill = {800, ground.ground_line, 250, 350, 0.3 };
+    HOLE hole = {1000, ground.ground_line, 30, 15};
 
     while(true) {
 
@@ -93,7 +95,8 @@ int main(void) {
 
         ground_paint(&ground);
 
-        hill_paint(&hill);
+        //hill_paint(&hill);
+        hole_paint(&hole);
 
         tree_paint(&tree);
 
