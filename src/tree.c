@@ -54,7 +54,7 @@ int tree_hit(TREE tree, BALL *ball) {
     int i;
     for(i = 0; i < 8; i++) {
         if(hit_gamecircle(tree.leaves[i], ball->shape)) {
-            ball->lost = 1;
+            ball->state = BALL_LOST;
             return 1;
         }
     }

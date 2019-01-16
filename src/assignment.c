@@ -29,6 +29,8 @@ ANIMATIONCLIP clip = {
     600, HEIGHT - 200, frames, 4, 0.05, 0, 0
 };
 
+BALL *ball_ref;
+
 int main(void) {
 
     initwindow(WIDTH, HEIGHT);
@@ -84,6 +86,10 @@ int main(void) {
     DUNE dune = { 900, ground.ground_line, 150, 75 };
     HILL hill = {800, ground.ground_line, 250, 350, 0.3 };
     HOLE hole = {1000, ground.ground_line, 30, 15};
+    BALL ball = {{{650, ground.ground_line}, 10}, BALL_STATIC};
+    ball_ref  = &ball;
+    clip.left = ball.shape.centre.x - 40;
+    clip.top  = ground.ground_line - 55;
 
     while(true) {
 
@@ -99,6 +105,8 @@ int main(void) {
         hole_paint(&hole);
 
         tree_paint(&tree);
+
+        ball_paint(&ball);
 
         draw_bitmap(bmp, 200, HEIGHT - 200);
 
@@ -139,10 +147,16 @@ int main(void) {
 
 void test_hit(void) {
     printf("Ball Hit\n");
+    ball_ref->shape.centre.x += 350;
 }
 
 void print_x(GAMEBUTTON x) {
     printf("Name of X is %s\n", x.text);
-    animation_reset(&clip);
-    clip.play = 1;
+
+    if(clip.current_frame == 0)
+        clip.play = 1;
+    else {
+        animation_reset(&clip);
+        ball_ref->shape.centre.x -= 350;
+    }
 }

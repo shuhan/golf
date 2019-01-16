@@ -1029,7 +1029,7 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1547600994 source:d:\study\c programming for msc\golf\src\assignment.c
+1547608281 source:d:\study\c programming for msc\golf\src\assignment.c
 	<graphics_lib.h>
 	<amio_lib.h>
 	"common.h"
@@ -1089,10 +1089,11 @@
 	"ground.h"
 	"graphics_lib.h"
 
-1547333093 source:d:\study\c programming for msc\golf\src\ball.c
+1547607969 source:d:\study\c programming for msc\golf\src\ball.c
 	"ball.h"
+	<graphics_lib.h>
 
-1547521314 d:\study\c programming for msc\golf\src\ball.h
+1547607931 d:\study\c programming for msc\golf\src\ball.h
 	"common.h"
 
 1547338139 source:d:\study\c programming for msc\golf\src\meters.c
@@ -1112,7 +1113,7 @@
 	"common.h"
 	"ball.h"
 
-1547521663 source:d:\study\c programming for msc\golf\src\lake.c
+1547603105 source:d:\study\c programming for msc\golf\src\lake.c
 	"lake.h"
 	<graphics_lib.h>
 	"ball.h"
@@ -1120,7 +1121,7 @@
 1547521632 d:\study\c programming for msc\golf\src\lake.h
 	"ball.h"
 
-1547521532 source:d:\study\c programming for msc\golf\src\tree.c
+1547603105 source:d:\study\c programming for msc\golf\src\tree.c
 	"tree.h"
 	<graphics_lib.h>
 
@@ -1134,7 +1135,7 @@
 1547600869 d:\study\c programming for msc\golf\src\hole.h
 	"ball.h"
 
-1547600773 source:d:\study\c programming for msc\golf\src\hole.c
+1547603134 source:d:\study\c programming for msc\golf\src\hole.c
 	"hole.h"
 	<graphics_lib.h>
 

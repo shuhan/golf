@@ -7,6 +7,6 @@ void hole_paint(HOLE *hole) {
 
 int hole_hit(HOLE hole, BALL *ball) {
     int res = ball->shape.centre.x > hole.x - hole.width && ball->shape.centre.x < hole.x + hole.width && ball->shape.centre.y + ball->shape.radius >= hole.y;
-    if(res) ball->lost = 1;
+    if(res) ball->state = BALL_IN_HOLE;
     return res;
 }
