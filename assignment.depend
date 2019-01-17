@@ -801,10 +801,10 @@
 1447145830 d:\study\c programming for msc\golf\include\portmidi\porttime.h
 	<stdint.h>
 
-1547510791 source:d:\study\c programming for msc\golf\include\graphics_lib_functions.c
+1547687563 source:d:\study\c programming for msc\golf\include\graphics_lib_functions.c
 	<graphics_lib.h>
 
-1547510726 d:\study\c programming for msc\golf\include\graphics_lib.h
+1547687557 d:\study\c programming for msc\golf\include\graphics_lib.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -1029,7 +1029,7 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1547608281 source:d:\study\c programming for msc\golf\src\assignment.c
+1547687883 source:d:\study\c programming for msc\golf\src\assignment.c
 	<graphics_lib.h>
 	<amio_lib.h>
 	"common.h"
@@ -1046,7 +1046,7 @@
 	"hill.h"
 	"hole.h"
 
-1547601853 d:\study\c programming for msc\golf\src\common.h
+1547688047 d:\study\c programming for msc\golf\src\common.h
 
 1547314101 d:\study\c programming for msc\golf\src\button.h
 
@@ -1075,33 +1075,37 @@
 1547256313 source:d:\study\c programming for msc\golf\src\player.c
 	"player.h"
 
-1547257269 d:\study\c programming for msc\golf\src\player.h
+1547660897 d:\study\c programming for msc\golf\src\player.h
+	"animation.h"
+	"meters.h"
 
-1547330981 source:d:\study\c programming for msc\golf\src\weather.c
+1547679334 source:d:\study\c programming for msc\golf\src\weather.c
 	"weather.h"
 
-1547330971 d:\study\c programming for msc\golf\src\weather.h
+1547681721 d:\study\c programming for msc\golf\src\weather.h
 
 1547521621 d:\study\c programming for msc\golf\src\ground.h
 	"ball.h"
 
-1547600499 source:d:\study\c programming for msc\golf\src\ground.c
+1547688277 source:d:\study\c programming for msc\golf\src\ground.c
 	"ground.h"
-	"graphics_lib.h"
+	<graphics_lib.h>
 
-1547607969 source:d:\study\c programming for msc\golf\src\ball.c
+1547683492 source:d:\study\c programming for msc\golf\src\ball.c
 	"ball.h"
 	<graphics_lib.h>
 
-1547607931 d:\study\c programming for msc\golf\src\ball.h
+1547680719 d:\study\c programming for msc\golf\src\ball.h
 	"common.h"
+	"weather.h"
 
-1547338139 source:d:\study\c programming for msc\golf\src\meters.c
+1547681911 source:d:\study\c programming for msc\golf\src\meters.c
 	"meters.h"
+	<graphics_lib.h>
 
 1547338137 d:\study\c programming for msc\golf\src\meters.h
 
-1547602575 source:d:\study\c programming for msc\golf\src\hill.c
+1547688055 source:d:\study\c programming for msc\golf\src\hill.c
 	"hill.h"
 	<graphics_lib.h>
 
@@ -1113,7 +1117,7 @@
 	"common.h"
 	"ball.h"
 
-1547603105 source:d:\study\c programming for msc\golf\src\lake.c
+1547683458 source:d:\study\c programming for msc\golf\src\lake.c
 	"lake.h"
 	<graphics_lib.h>
 	"ball.h"
@@ -1121,11 +1125,11 @@
 1547521632 d:\study\c programming for msc\golf\src\lake.h
 	"ball.h"
 
-1547603105 source:d:\study\c programming for msc\golf\src\tree.c
+1547683846 source:d:\study\c programming for msc\golf\src\tree.c
 	"tree.h"
 	<graphics_lib.h>
 
-1547521438 source:d:\study\c programming for msc\golf\src\dune.c
+1547683258 source:d:\study\c programming for msc\golf\src\dune.c
 	"dune.h"
 	<graphics_lib.h>
 
@@ -1135,7 +1139,26 @@
 1547600869 d:\study\c programming for msc\golf\src\hole.h
 	"ball.h"
 
-1547603134 source:d:\study\c programming for msc\golf\src\hole.c
+1547683943 source:d:\study\c programming for msc\golf\src\hole.c
 	"hole.h"
 	<graphics_lib.h>
+
+1547660467 source:d:\study\c programming for msc\golf\src\level.c
+	"level.h"
+
+1547674295 d:\study\c programming for msc\golf\src\level.h
+	"common.h"
+	"ball.h"
+	"button.h"
+	"cloud.h"
+	"weather.h"
+	"animation.h"
+	"ground.h"
+	"meters.h"
+	"tree.h"
+	"lake.h"
+	"dune.h"
+	"hill.h"
+	"hole.h"
+	"player.h"
 

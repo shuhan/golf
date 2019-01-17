@@ -11,6 +11,10 @@ void lake_paint(LAKE *lake) {
 
 int lake_hit(LAKE lake, BALL *ball) {
     int res = ball->shape.centre.x > lake.x - lake.width && ball->shape.centre.x < lake.x + lake.width && ball->shape.centre.y + ball->shape.radius >= lake.y;
-    if(res) ball->state = BALL_LOST;
+    if(res) {
+        ball->state = BALL_LOST;
+        ball->horizontal_speed  = 0;
+        ball->vertical_speed    = 0;
+    }
     return res;
 }

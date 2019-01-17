@@ -1,12 +1,21 @@
 #ifndef COMMON_H_INCLUDED
 #define COMMON_H_INCLUDED
 
-//Extension of colour from Allegro wrapper
-#define COLOUR_TRANSPARENT      -1
-
 //Screen Size
 #define WIDTH                   1200
 #define HEIGHT                  675
+//Gravity constant g in m/s^2
+#define GRAVITY_CONSTANT        4
+//Friction constants
+#define AIR_LOSS                0.005
+#define GROUND_LOSS             0.2
+#define SAND_LOSS               0.5
+#define HILL_LOSS               0.2
+#define TREE_LOSS               0.3
+#define MAX_HIT_SPEED           100
+#define WIND_INFLUENCE_ON_BALL  0.05
+#define WIND_INFLUENCE_ON_CLOUD 0.1
+#define HILL_CONSUME_THREASHOLD 5       //If speed is less than this, ball will be lost in hill
 
 typedef struct {
     int x;

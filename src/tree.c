@@ -48,6 +48,7 @@ void tree_paint(TREE *tree) {
 
 int tree_hit(TREE tree, BALL *ball) {
     if(hit_gamerect(tree.stamp, ball->shape)) {
+        ball->horizontal_speed *= -1 * ( 1 - TREE_LOSS);
         return 1;
     }
 
@@ -55,6 +56,8 @@ int tree_hit(TREE tree, BALL *ball) {
     for(i = 0; i < 8; i++) {
         if(hit_gamecircle(tree.leaves[i], ball->shape)) {
             ball->state = BALL_LOST;
+            ball->horizontal_speed  = 0;
+            ball->vertical_speed    = 0;
             return 1;
         }
     }

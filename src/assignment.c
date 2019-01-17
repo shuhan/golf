@@ -30,6 +30,7 @@ ANIMATIONCLIP clip = {
 };
 
 BALL *ball_ref;
+METER *meter_ref;
 
 int main(void) {
 
@@ -70,23 +71,21 @@ int main(void) {
 
     GROUND ground = {WIDTH, HEIGHT, (HEIGHT * 2) / 3, (HEIGHT * 5) / 6 };
 
-    char bitmap_path[300] = "data/res/win.png";
-
-    BITMAP bmp = load_bitmap(bitmap_path);
-
     clip.on_activation = test_hit;
     animation_init(&clip);
 
-    METER meter = {800, ground.ground_line, 100, 0, 89, YELLOW, BLACK, 0.1, 20};
+    METER meter = {800, ground.ground_line, 100, 0, 89, YELLOW, BLACK, 0.3, 20};
     meter.selecting = 1;
+    meter_ref   = &meter;
 
     meter_init(&meter);
 
     TREE tree = {600, ground.ground_line, 30};
-    DUNE dune = { 900, ground.ground_line, 150, 75 };
+    DUNE dune = {600, ground.ground_line, 150, 75 };
+    LAKE lake = {600, ground.ground_line, 150, 75 };
     HILL hill = {800, ground.ground_line, 250, 350, 0.3 };
     HOLE hole = {1000, ground.ground_line, 30, 15};
-    BALL ball = {{{650, ground.ground_line}, 10}, BALL_STATIC};
+    BALL ball = {{{200, ground.ground_line}, 10}, BALL_STATIC};
     ball_ref  = &ball;
     clip.left = ball.shape.centre.x - 40;
     clip.top  = ground.ground_line - 55;
@@ -101,14 +100,22 @@ int main(void) {
 
         ground_paint(&ground);
 
-        //hill_paint(&hill);
+        hill_paint(&hill);
+
         hole_paint(&hole);
 
-        tree_paint(&tree);
+        //tree_paint(&tree);
+
+        //dune_paint(&dune);
+
+        //lake_paint(&lake);
+
+        if(ball_update(&ball, gameweather_now(), WIND_INFLUENCE_ON_BALL)) {
+            ground_hit(ground, &ball);
+            hill_hit(hill, &ball);
+        }
 
         ball_paint(&ball);
-
-        draw_bitmap(bmp, 200, HEIGHT - 200);
 
         animation_update(&clip);
 
@@ -119,7 +126,7 @@ int main(void) {
 
         gamemenu_paint(menu);
 
-        cloud_influence(&cloud, gameweather_now(), 0.1);
+        cloud_influence(&cloud, gameweather_now(), WIND_INFLUENCE_ON_CLOUD);
 
         cloud_paint(cloud);
 
@@ -138,7 +145,6 @@ int main(void) {
     }
 
     animation_destroy(&clip);
-    destroy_bitmap(bmp);
     closekeyboard();
     closegraph();
 
@@ -147,7 +153,8 @@ int main(void) {
 
 void test_hit(void) {
     printf("Ball Hit\n");
-    ball_ref->shape.centre.x += 350;
+    meter_ref->selecting = 0;
+    ball_hit(ball_ref, MAX_HIT_SPEED * (meter_ref->current_reading / 100), 3.1416 / 3);
 }
 
 void print_x(GAMEBUTTON x) {
@@ -157,6 +164,11 @@ void print_x(GAMEBUTTON x) {
         clip.play = 1;
     else {
         animation_reset(&clip);
-        ball_ref->shape.centre.x -= 350;
+        ball_ref->state = BALL_ON_GROUND;
+        ball_ref->horizontal_speed = 0;
+        ball_ref->vertical_speed = 0;
+        ball_ref->shape.centre.x = clip.left + 40;
+        ball_ref->shape.centre.y = clip.top + 55;
+        meter_ref->selecting = 1;
     }
 }

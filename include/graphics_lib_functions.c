@@ -161,6 +161,8 @@ COLOUR make_RGB(unsigned colour)
         case DIRT: result.r = 155; result.g = 118; result.b = 83;
         break;
         case SAND: result.r = 234; result.g = 227; result.b = 209;
+        break;
+        case DARKDIRT: result.r = 134; result.g = 106; result.b = 64;
     }
     return result;
 }

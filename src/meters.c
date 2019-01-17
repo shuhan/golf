@@ -1,4 +1,5 @@
 #include "meters.h"
+#include <graphics_lib.h>
 
 void meter_init(METER *meter) {
     meter->current_reading = meter->min_reading;

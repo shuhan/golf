@@ -73,6 +73,7 @@ int                 XMOUSE, YMOUSE, ZMOUSE;
 #define WATER           18
 #define DIRT            19
 #define SAND            20
+#define DARKDIRT        21
 
 
 /* prototypes */

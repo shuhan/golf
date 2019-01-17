@@ -12,5 +12,25 @@ void dune_paint(DUNE *dune) {
 }
 
 int dune_hit(DUNE dune, BALL *ball) {
-    return ball->shape.centre.x > dune.x - dune.width && ball->shape.centre.x < dune.x + dune.width && ball->shape.centre.y + ball->shape.radius >= dune.y;
+    int retval = ball->shape.centre.x > dune.x - dune.width && ball->shape.centre.x < dune.x + dune.width && ball->shape.centre.y + ball->shape.radius >= dune.y;
+
+    if(retval) {
+        //Ball on/hit ground && ball was in flight
+        if(ball->state == BALL_IN_FLIGHT) {
+            //Calculate bounce
+            ball->vertical_speed    *= -1 * (1 - SAND_LOSS);
+            ball->vertical_speed    -= GRAVITY_CONSTANT;
+        }
+
+        if(ball->state == BALL_ON_GROUND) {
+            ball->state = BALL_ON_SAND;
+        }
+
+        if(ball->vertical_speed <= 0) {
+            ball->vertical_speed = 0;
+            ball->state = BALL_ON_SAND;
+        }
+    }
+
+    return retval;
 }
