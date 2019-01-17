@@ -14,7 +14,7 @@
 typedef struct {
     GAMECIRCLE  shape;              //Shape of the ball
     unsigned    state;              //Ball states IN_FLIGHT, ON_GROUND, ON_SAND, LOST
-    float       mass;               //In KG
+    void        (*on_stop)(BALL);   //On activation event
                                     //Direction is expressed in term of horizontal and vertical speed
     float       horizontal_speed;   //In m/s (Horizontal Portion of the speed)
     float       vertical_speed;     //In m/s (Vertical Portion of the speed)

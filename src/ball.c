@@ -38,6 +38,12 @@ int ball_update(BALL *ball, GAMEWEATHER weather, float influence_rate) {
         if(ball->horizontal_speed != 0 || ball->vertical_speed != 0)
             printf("Ball x %d, y %d, horizontal %f, vertical %f, state %d\n", ball->shape.centre.x, ball->shape.centre.y, ball->horizontal_speed, ball->vertical_speed, ball->state);
         */
+
+        //Once ball stops, call the ball stopped function
+        if(ball->horizontal_speed == 0 && ball->vertical_speed == 0) {
+            if(ball->on_stop) ball->on_stop(*ball);
+        }
+
         return 1;
     } else {
         ball->delay_counter++;

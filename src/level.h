@@ -18,10 +18,10 @@
 
 typedef struct {
 
-    PLAYER      *player;
-    GROUND      *ground;
-    BALL        *ball;
-    HOLE        *hole;
+    PLAYER      player;
+    GROUND      ground;
+    BALL        ball;
+    HOLE        hole;
     TREE        *trees;
     int         tree_count;
     LAKE        *lakes;

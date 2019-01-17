@@ -1,18 +1,30 @@
 #ifndef PLAYER_H_INCLUDED
 #define PLAYER_H_INCLUDED
 
+#include <graphics_lib.h>
 #include "animation.h"
 #include "meters.h"
 
-typedef struct {
+#define PLAYER_PLAYING          0
+#define PLAYER_WON              1
 
+typedef struct {
     ANIMATIONCLIP   animation;
+    char            winframe_path[300];
     METER           angle_meter;
     METER           force_meter;
+    unsigned        state;
     int             current_level;
     int             current_hit_count;
     int             total_score;
+    BITMAP          winframe;
 
 } PLAYER;
+
+void player_init(PLAYER *player);
+
+void player_destroy(PLAYER *player);
+
+void player_paint(PLAYER *player);
 
 #endif // PLAYER_H_INCLUDED

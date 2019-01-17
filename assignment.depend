@@ -1075,7 +1075,7 @@
 1547256313 source:d:\study\c programming for msc\golf\src\player.c
 	"player.h"
 
-1547660897 d:\study\c programming for msc\golf\src\player.h
+1547690227 d:\study\c programming for msc\golf\src\player.h
 	"animation.h"
 	"meters.h"
 
@@ -1095,7 +1095,7 @@
 	"ball.h"
 	<graphics_lib.h>
 
-1547680719 d:\study\c programming for msc\golf\src\ball.h
+1547690632 d:\study\c programming for msc\golf\src\ball.h
 	"common.h"
 	"weather.h"
 
