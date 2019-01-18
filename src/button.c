@@ -1,7 +1,10 @@
 #include "button.h"
+#include "weather.h"
 #include <graphics_lib.h>
 
 void gamebutton_paint(GAMEBUTTON button) {
+
+    if(!button.visible) return;             //If button hidden, don't need to paint
 
     int fore_colour = button.fore_colour, back_colour = button.back_colour;
 
@@ -21,23 +24,44 @@ void gamebutton_paint(GAMEBUTTON button) {
     outtextxy(button.left + ((button.width - text_width) / 2), button.top + ((button.height - line_height) / 2), button.text);
 }
 
-void gamemenu_paint(GAMEMENU menu) {
+void gamemenu_paint(GAMEMENU menu, GAMEWEATHER weather) {
 
-    /*
-        Shall have additional paint events as well to prepare the menu
-        There shall be some fixed drawing logics at the moment
-    */
     setbkcolor(LIGHTBLUE);
+    /*
+    ground_paint(&(menu.ground));
 
     int i;
 
+    for(i = 0; i < menu.hill_count; i++) {
+        tree_paint(menu.hills + i);
+    }
+
+    for(i = 0; i < menu.cloud_count; i++) {
+        cloud_influence(menu.clouds + i, weather, WIND_INFLUENCE_ON_CLOUD);
+        cloud_paint(menu.clouds + i);
+    }
+
+    for(i = 0; i < menu.dune_count; i++) {
+        tree_paint(menu.dunes + i);
+    }
+
+    for(i = 0; i < menu.lake_count; i++) {
+        tree_paint(menu.lakes + i);
+    }
+
+    for(i = 0; i < menu.tree_count; i++) {
+        tree_paint(menu.trees + i);
+    }
+    */
+    int i;
     for(i = 0; i < menu.button_count; i++) {
         gamebutton_paint(menu.buttons[i]);
     }
 }
 
 int gamebutton_mousein(GAMEBUTTON button) {
-    return XMOUSE > button.left &&
+    return button.visible &&
+           XMOUSE > button.left &&
            XMOUSE < button.left + button.width &&
            YMOUSE > button.top &&
            YMOUSE < button.top + button.height;

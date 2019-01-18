@@ -1,12 +1,15 @@
 #ifndef COMMON_H_INCLUDED
 #define COMMON_H_INCLUDED
 
-//Screen Size
+//-----------------------------------------------
+//  Screen Size
+//-----------------------------------------------
 #define WIDTH                   1200
 #define HEIGHT                  675
-//Gravity constant g in m/s^2
+//-----------------------------------------------
+//  GAME ENVIRONMENT CONSTANTS
+//-----------------------------------------------
 #define GRAVITY_CONSTANT        4
-//Friction constants
 #define AIR_LOSS                0.005
 #define GROUND_LOSS             0.2
 #define SAND_LOSS               0.5
@@ -15,7 +18,46 @@
 #define MAX_HIT_SPEED           100
 #define WIND_INFLUENCE_ON_BALL  0.05
 #define WIND_INFLUENCE_ON_CLOUD 0.1
-#define HILL_CONSUME_THREASHOLD 5       //If speed is less than this, ball will be lost in hill
+#define HILL_CONSUME_THREASHOLD 5                                       //If speed is less than this, ball will be lost in hill
+//-----------------------------------------------
+//  Buttons Configuration
+//-----------------------------------------------
+#define BUTTON_BACKCOLOUR       DARKDIRT
+#define BUTTON_FORECOLOUR       WHITE
+#define BUTTON_HBACKCOLOUR      GRASS
+#define BUTTON_HFORECOLOUR      WHITE
+#define BUTTON_WIDTH            250
+#define BUTTON_HEIGHT           40
+#define BUTTON_MARGIN           15
+//-----------------------------------------------
+//  Welcome Screen Constants
+//-----------------------------------------------
+#define WELCOME_BUTTON_COUNT    4
+//-----------------------------------------------
+//  Pause Screen Constants
+//-----------------------------------------------
+#define PAUSE_BUTTON_COUNT      3
+//-----------------------------------------------
+//  Object Size Standards
+//-----------------------------------------------
+#define CLOUD_POSITION_Y        HEIGHT/6
+#define CLOUD_SIZE_STANDARD     50
+#define CLOUD_SHAPE_FACTOR      1.5
+#define TREE_SIZE_STANDARD      30
+#define DUNE_WIDTH_STANDARD     150
+#define DUNE_HEIGHT_STANDARD    75
+#define LAKE_WIDTH_STANDARD     150
+#define LAKE_HEIGHT_STANDARD    75
+#define HILL_RADIUS_LARGE       250
+#define HILL_HEIGHT_LARGE       350
+#define HILL_RADIUS_STANDARD    150
+#define HILL_HEIGHT_STANDARD    210
+#define HILL_PEAK_DISTANCE      0.3
+#define HOLE_WIDTH_STANDARD     30
+#define HOLE_HEIGHT_STANDARD    15
+#define GROUND_TOP_LINE         (HEIGHT*2)/3
+#define GROUND_LINE             (HEIGHT*5)/6
+
 
 typedef struct {
     int x;

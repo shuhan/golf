@@ -1029,7 +1029,7 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1547687883 source:d:\study\c programming for msc\golf\src\assignment.c
+1547819739 source:d:\study\c programming for msc\golf\src\assignment.c
 	<graphics_lib.h>
 	<amio_lib.h>
 	"common.h"
@@ -1046,12 +1046,20 @@
 	"hill.h"
 	"hole.h"
 
-1547688047 d:\study\c programming for msc\golf\src\common.h
+1547820671 d:\study\c programming for msc\golf\src\common.h
 
-1547314101 d:\study\c programming for msc\golf\src\button.h
+1547820335 d:\study\c programming for msc\golf\src\button.h
+	"ground.h"
+	"tree.h"
+	"lake.h"
+	"dune.h"
+	"hill.h"
+	"cloud.h"
+	"weather.h"
 
-1547323004 source:d:\study\c programming for msc\golf\src\button.c
+1547819541 source:d:\study\c programming for msc\golf\src\button.c
 	"button.h"
+	"weather.h"
 	<graphics_lib.h>
 
 1547602338 source:d:\study\c programming for msc\golf\src\common.c
@@ -1072,10 +1080,11 @@
 1547317773 d:\study\c programming for msc\golf\src\cloud.h
 	"weather.h"
 
-1547256313 source:d:\study\c programming for msc\golf\src\player.c
+1547770300 source:d:\study\c programming for msc\golf\src\player.c
 	"player.h"
 
-1547690227 d:\study\c programming for msc\golf\src\player.h
+1547811006 d:\study\c programming for msc\golf\src\player.h
+	<graphics_lib.h>
 	"animation.h"
 	"meters.h"
 
@@ -1091,7 +1100,7 @@
 	"ground.h"
 	<graphics_lib.h>
 
-1547683492 source:d:\study\c programming for msc\golf\src\ball.c
+1547690557 source:d:\study\c programming for msc\golf\src\ball.c
 	"ball.h"
 	<graphics_lib.h>
 
@@ -1143,10 +1152,10 @@
 	"hole.h"
 	<graphics_lib.h>
 
-1547660467 source:d:\study\c programming for msc\golf\src\level.c
+1547772911 source:d:\study\c programming for msc\golf\src\level.c
 	"level.h"
 
-1547674295 d:\study\c programming for msc\golf\src\level.h
+1547773173 d:\study\c programming for msc\golf\src\level.h
 	"common.h"
 	"ball.h"
 	"button.h"
@@ -1161,4 +1170,28 @@
 	"hill.h"
 	"hole.h"
 	"player.h"
+
+1447145968 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_audio.h
+	"allegro5/allegro.h"
+
+1447145966 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_acodec.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_audio.h"
+
+1547691334 source:d:\study\c programming for msc\golf\src\level_factory.c
+	"level_factory.h"
+
+1547691336 d:\study\c programming for msc\golf\src\level_factory.h
+
+1547691404 source:d:\study\c programming for msc\golf\src\menu_factory.c
+	"menu_factory.h"
+
+1547691406 d:\study\c programming for msc\golf\src\menu_factory.h
+
+1547819153 source:d:\study\c programming for msc\golf\src\golf.c
+	"golf.h"
+
+1547816750 d:\study\c programming for msc\golf\src\golf.h
+	"button.h"
+	"level.h"
 

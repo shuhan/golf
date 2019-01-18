@@ -21,9 +21,9 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add option="-lgcc_eh" />
-					<Add option="-static-libgcc" />
 					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-lgcc_eh" />
 					<Add option="-lwinmm" />
 					<Add option="-lportmidi" />
 					<Add option="-lportaudio-2" />
@@ -879,6 +879,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/dune.h" />
+		<Unit filename="src/golf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/golf.h" />
 		<Unit filename="src/ground.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -899,6 +903,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/level.h" />
+		<Unit filename="src/level_factory.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/level_factory.h" />
+		<Unit filename="src/menu_factory.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/menu_factory.h" />
 		<Unit filename="src/meters.c">
 			<Option compilerVar="CC" />
 		</Unit>

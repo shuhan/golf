@@ -16,12 +16,20 @@
 #include "hole.h"
 #include "player.h"
 
+#define GAMESTATE_SELECT_ANGLE      0       //Default state, select angle
+#define GAMESTATE_SELECT_SPEED      1       //Then select speed
+#define GAMESTATE_BALL_HIT          2       //Ball was hit
+#define GAMESTATE_BALL_STOPPED      3       //Ball Stopped -> Now either win or go back to default state
+#define GAMESTATE_WIN               4       //Game win, Go to next level
+
 typedef struct {
 
     PLAYER      player;
     GROUND      ground;
     BALL        ball;
     HOLE        hole;
+    METER       angle_meter;
+    METER       force_meter;
     TREE        *trees;
     int         tree_count;
     LAKE        *lakes;
@@ -32,8 +40,11 @@ typedef struct {
     int         hill_count;
     CLOUD       *clouds;
     int         cloud_count;
+    unsigned    game_state;
 
 } GAMELEVEL;
+
+void gamelevel_update(GAMELEVEL *level);
 
 void gamelevel_paint(GAMELEVEL *level);
 

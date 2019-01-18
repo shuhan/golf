@@ -11,10 +11,7 @@
 typedef struct {
     ANIMATIONCLIP   animation;
     char            winframe_path[300];
-    METER           angle_meter;
-    METER           force_meter;
     unsigned        state;
-    int             current_level;
     int             current_hit_count;
     int             total_score;
     BITMAP          winframe;

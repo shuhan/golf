@@ -50,12 +50,12 @@ int main(void) {
     GAMEMENU menu;
 
     GAMEBUTTON button;
-    button.back_colour  = DARKGRAY;
+    button.back_colour  = DARKDIRT;
     button.fore_colour  = WHITE;
-    button.hback_colour = BLUE;
-    button.hfore_colour = YELLOW;
-    button.width        = 200;
-    button.height       = 30;
+    button.hback_colour = GRASS;
+    button.hfore_colour = WHITE;
+    button.width        = 250;
+    button.height       = 40;
     button.top          = (HEIGHT - button.height) / 2;
     button.left         = (WIDTH - button.width) / 2;
     strcpy(button.text, "Start");
@@ -124,7 +124,7 @@ int main(void) {
         //Process mouse event
         gamemenu_check_mouse(menu);
 
-        gamemenu_paint(menu);
+        gamemenu_paint(menu, gameweather_now());
 
         cloud_influence(&cloud, gameweather_now(), WIND_INFLUENCE_ON_CLOUD);
 
