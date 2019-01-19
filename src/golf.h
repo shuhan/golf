@@ -3,6 +3,7 @@
 
 #include "button.h"
 #include "level.h"
+#include "common.h"
 
 #define GAME_WELCOME        0
 #define GAME_PLAY           1
@@ -14,8 +15,10 @@ typedef struct {
 
     GAMEMENU        welcome_screen;
     GAMEMENU        pause_screen;
-    GAMELEVEL       levels[9];
+    PLAYER          player;
+    GAMELEVEL       levels[NUMBER_OF_LEVELS];
     int             current_level;
+    int             total_score;
     unsigned        game_state;
     GAMEWEATHER     current_weather;
     int             gametorun;

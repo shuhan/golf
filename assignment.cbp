@@ -907,10 +907,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/level_factory.h" />
-		<Unit filename="src/menu_factory.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/menu_factory.h" />
 		<Unit filename="src/meters.c">
 			<Option compilerVar="CC" />
 		</Unit>

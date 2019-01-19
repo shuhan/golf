@@ -29,7 +29,7 @@ typedef struct {
     BALL        ball;
     HOLE        hole;
     METER       angle_meter;
-    METER       force_meter;
+    METER       speed_meter;
     TREE        *trees;
     int         tree_count;
     LAKE        *lakes;

@@ -1,6 +1,7 @@
 #ifndef ANIMATION_H_INCLUDED
 #define ANIMATION_H_INCLUDED
 #include <graphics_lib.h>
+#include "common.h"
 
 typedef struct {
     char            frame_path[300];
@@ -14,7 +15,7 @@ typedef struct {
 typedef struct {
     int             left;                       //Animation left corner
     int             top;                        //Animation top corner
-    ANIMATIONFRAME  *frames;                    //Frames
+    ANIMATIONFRAME  frames[MAX_FRAME_COUNT];    //Fixed max frame count for now
     int             frame_count;                //Number of frame in the animation
     float           incriment_rate;             //How many frame changes on every tick, it can be smaller than 1
     char            loop;                       //If animation shall loop

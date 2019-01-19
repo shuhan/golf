@@ -13,7 +13,6 @@ typedef struct {
     char            winframe_path[300];
     unsigned        state;
     int             current_hit_count;
-    int             total_score;
     BITMAP          winframe;
 
 } PLAYER;

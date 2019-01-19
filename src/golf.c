@@ -32,6 +32,7 @@ void golf_init(GOLF *golf) {
     //  Game Parameters
     //-------------------------------------------------
     golf->current_level = 0;
+    golf->total_score   = 0;
     golf->game_state    = GAME_WELCOME;
     //-------------------------------------------------
     //ToDo: Load saved game if any
@@ -213,6 +214,10 @@ void golf_init(GOLF *golf) {
     //-------------------------------------------------
     //3. Create Game Screens
     //-------------------------------------------------
+    create_game_levels(golf->levels);
+
+
+    //  Attach events to the levels or do necessary modifications
 
     /**
      * Additional Pending Game Screens

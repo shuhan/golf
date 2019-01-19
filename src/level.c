@@ -7,6 +7,11 @@ void gamelevel_reset(GAMELEVEL *level) {
     level->ball.vertical_speed = 0;
     level->ball.shape.centre.x = BALL_X;
     level->ball.shape.centre.y = BALL_Y;
+    //Reset Meters
+    level->angle_meter.left = level->ball.shape.centre.x;
+    level->angle_meter.top  = level->ball.shape.centre.y;
+    level->speed_meter.left = level->ball.shape.centre.x + SPEED_METER_OFFSET;
+    level->speed_meter.top  = level->ball.shape.centre.y;
     //Reset Player
     level->player.animation.left = level->ball.shape.centre.x - PLAYER_X_OFFSET;
     level->player.animation.top = level->ball.shape.centre.y - PLAYER_Y_OFFSET;

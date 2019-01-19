@@ -17,8 +17,6 @@
 #include "hole.h"
 #include "golf.h"
 
-int *hello = 0;
-
 int main(void) {
     GOLF golf;
 

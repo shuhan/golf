@@ -32,6 +32,16 @@
 #define BUTTON_HEIGHT           40
 #define BUTTON_MARGIN           15
 //-----------------------------------------------
+//  Resource Constants
+//-----------------------------------------------
+#define GRAPHICS_FRAME_PATH_0   "data/res/0.png"
+#define GRAPHICS_FRAME_PATH_1   "data/res/1.png"
+#define GRAPHICS_FRAME_PATH_2   "data/res/2.png"
+#define GRAPHICS_FRAME_PATH_3   "data/res/3.png"
+#define GRAPHICS_FRAME_PATH_WIN "data/res/win.png"
+#define MAX_FRAME_COUNT         4
+#define FRAME_PROGRESS_RATE     0.05
+//-----------------------------------------------
 //  Object Size Standards
 //-----------------------------------------------
 #define CLOUD_POSITION_Y        HEIGHT/6
@@ -70,7 +80,61 @@
 #define HOLE_Y                  GROUND_LINE
 #define BALL_X                  WIDTH/6
 #define BALL_Y                  GROUND_LINE
-
+#define BALL_RADIUS             10
+#define METER_BACK_COLOUR       YELLOW
+#define METER_FORE_COLOUR       BLACK
+#define METER_SPEED_FACTOR      0.3
+#define ANGLE_METER_SIZE        100
+#define ANGLE_METER_WIDTH       20
+#define ANGLE_METER_MAX         89
+#define ANGLE_METER_MIN         0
+#define SPEED_METER_SIZE        100
+#define SPEED_METER_WIDTH       20
+#define SPEED_METER_OFFSET      100
+#define SPEED_METER_MAX         MAX_HIT_SPEED
+#define SPEED_METER_MIN         0
+#define NUMBER_OF_LEVELS        9
+//-----------------------------------------------
+//  Level 1 Constants
+//-----------------------------------------------
+#define LEVEL_1_TREE_X          (WIDTH*15)/16
+//-----------------------------------------------
+//  Level 2 Constants
+//-----------------------------------------------
+#define LEVEL_2_DUNE_X          (WIDTH*2)/3
+//-----------------------------------------------
+//  Level 3 Constants
+//-----------------------------------------------
+#define LEVEL_3_LAKE_X          (WIDTH*2)/3
+//-----------------------------------------------
+//  Level 4 Constants
+//-----------------------------------------------
+#define LEVEL_4_HILL_X          (WIDTH*2)/3
+#define LEVEL_4_TREE_X          (WIDTH*15)/16
+//-----------------------------------------------
+//  Level 5 Constants
+//-----------------------------------------------
+#define LEVEL_5_TREE_X          (WIDTH*3)/4
+//-----------------------------------------------
+//  Level 6 Constants
+//-----------------------------------------------
+#define LEVEL_6_TREE_X          (WIDTH)/2
+#define LEVEL_6_DUNE_X          (WIDTH*3)/4
+//-----------------------------------------------
+//  Level 7 Constants
+//-----------------------------------------------
+#define LEVEL_7_HILL_X          (WIDTH)/2
+#define LEVEL_7_TREE_X          (WIDTH*3)/4
+//-----------------------------------------------
+//  Level 8 Constants
+//-----------------------------------------------
+#define LEVEL_8_TREE_X          (WIDTH)/2
+#define LEVEL_8_LAKE_X          (WIDTH*3)/4
+//-----------------------------------------------
+//  Level 9 Constants
+//-----------------------------------------------
+#define LEVEL_9_TREE_X          (WIDTH)/4
+#define LEVEL_9_HILL_X          (WIDTH*3)/4
 
 typedef struct {
     int x;
