@@ -10,7 +10,7 @@ void gamelevel_reset(GAMELEVEL *level) {
     //Reset Player
     level->player.animation.left = level->ball.shape.centre.x - PLAYER_X_OFFSET;
     level->player.animation.top = level->ball.shape.centre.y - PLAYER_Y_OFFSET;
-    animation_reset(level->player->animation);
+    animation_reset(&level->player.animation);
     level->player.state = PLAYER_PLAYING;
     level->player.current_hit_count = 0;
     //Reset State

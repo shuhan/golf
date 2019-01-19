@@ -1157,7 +1157,7 @@
 1547859996 source:d:\study\c programming for msc\golf\src\level.c
 	"level.h"
 
-1547859988 d:\study\c programming for msc\golf\src\level.h
+1547861416 d:\study\c programming for msc\golf\src\level.h
 	"common.h"
 	"ball.h"
 	"button.h"
@@ -1190,7 +1190,7 @@
 
 1547691406 d:\study\c programming for msc\golf\src\menu_factory.h
 
-1547858349 source:d:\study\c programming for msc\golf\src\golf.c
+1547860980 source:d:\study\c programming for msc\golf\src\golf.c
 	"golf.h"
 	<graphics_lib.h>
 	<amio_lib.h>
