@@ -1,9 +1,11 @@
 #include "golf.h"
+#include <graphics_lib.h>
+#include <amio_lib.h>
 
 void golf_init(GOLF *golf) {
 
     //-------------------------------------------------
-    //Basic Initialization
+    //  Basic Initialization
     //-------------------------------------------------
     initwindow(WIDTH, HEIGHT);
     initfont();
@@ -13,10 +15,24 @@ void golf_init(GOLF *golf) {
     reg_keyboard_events();
     reg_mouse_events();
 
+    srand(time(0));
+
     gameweather_init();
     cloud_init(WIDTH);
 
     cleardevice();
+
+    golf->gametorun = 1;
+
+    //Copy the instance pointer to refer as current instance
+    //As only one object of type golf is created at a time
+    golf_game = golf;
+
+    //-------------------------------------------------
+    //  Game Parameters
+    //-------------------------------------------------
+    golf->current_level = 0;
+    golf->game_state    = GAME_WELCOME;
     //-------------------------------------------------
     //ToDo: Load saved game if any
     //-------------------------------------------------
@@ -25,7 +41,7 @@ void golf_init(GOLF *golf) {
     //-------------------------------------------------
     //1. Welcome Screen
     //-------------------------------------------------
-    int welcome_top = (HEIGHT - ((BUTTON_HEIGHT + BUTTON_MARGIN) * (WELCOME_BUTTON_COUNT - 1)));
+    int welcome_top = (HEIGHT - ((BUTTON_HEIGHT + BUTTON_MARGIN) * (WELCOME_BUTTON_COUNT))) / 2;
 
     GAMEBUTTON welcome_buttons[WELCOME_BUTTON_COUNT] = {
         {
@@ -38,9 +54,10 @@ void golf_init(GOLF *golf) {
             BUTTON_FORECOLOUR,
             BUTTON_HBACKCOLOUR,
             BUTTON_HFORECOLOUR,
-            0,                                                          //Shall be button event
+            welcome_button_clicked,                                     //Handle welcome screen button click
             0,                                                          //Initially don't highlight
-            has_savedata                                                //Continue button shall be visible only if there is saved data
+            has_savedata,                                               //Continue button shall be visible only if there is saved data
+            0                                                           //Mouse state 0 indicating mouse isn't pressed
         },
         {
             (WIDTH - BUTTON_WIDTH) / 2,                                 //Left
@@ -52,41 +69,44 @@ void golf_init(GOLF *golf) {
             BUTTON_FORECOLOUR,
             BUTTON_HBACKCOLOUR,
             BUTTON_HFORECOLOUR,
-            0,                                                          //Shall be button event
+            welcome_button_clicked,                                     //Handle welcome screen button click
             0,                                                          //Initially don't highlight
-            1                                                           //Continue button shall be visible only if there is saved data
+            1,                                                          //Always visible
+            0                                                           //Mouse state 0 indicating mouse isn't pressed
         },
         {
             (WIDTH - BUTTON_WIDTH) / 2,                                 //Left
             welcome_top + (2 * (BUTTON_HEIGHT + BUTTON_MARGIN)),        //Top
-            "LEADER BOARD",                                                 //Text
+            "LEADER BOARD",                                             //Text
             BUTTON_WIDTH,
             BUTTON_HEIGHT,
             BUTTON_BACKCOLOUR,
             BUTTON_FORECOLOUR,
             BUTTON_HBACKCOLOUR,
             BUTTON_HFORECOLOUR,
-            0,                                                          //Shall be button event
+            welcome_button_clicked,                                     //Handle welcome screen button click
             0,                                                          //Initially don't highlight
-            1                                                           //Continue button shall be visible only if there is saved data
+            1,                                                          //Always visible
+            0                                                           //Mouse state 0 indicating mouse isn't pressed
         },
         {
             (WIDTH - BUTTON_WIDTH) / 2,                                 //Left
             welcome_top + (3 * (BUTTON_HEIGHT + BUTTON_MARGIN)),        //Top
-            "EXIT",                                                 //Text
+            "EXIT",                                                     //Text
             BUTTON_WIDTH,
             BUTTON_HEIGHT,
             BUTTON_BACKCOLOUR,
             BUTTON_FORECOLOUR,
             BUTTON_HBACKCOLOUR,
             BUTTON_HFORECOLOUR,
-            0,                                                          //Shall be button event
+            welcome_button_clicked,                                     //Handle welcome screen button click
             0,                                                          //Initially don't highlight
-            1                                                           //Continue button shall be visible only if there is saved data
+            1,                                                          //Always visible
+            0                                                           //Mouse state 0 indicating mouse isn't pressed
         }
     };
 
-    golf->welcome_screen.buttons        = welcome_buttons;
+    alocncpy((void**)&(golf->welcome_screen.buttons), (void*)welcome_buttons, sizeof(welcome_buttons));
     golf->welcome_screen.button_count   = WELCOME_BUTTON_COUNT;
 
     //Add the ground
@@ -95,21 +115,21 @@ void golf_init(GOLF *golf) {
 
     //Add Cloud
     CLOUD clouds[1] = {{ random_number(0, WIDTH), random_number(CLOUD_POSITION_Y - CLOUD_SIZE_STANDARD, CLOUD_POSITION_Y + CLOUD_SIZE_STANDARD), CLOUD_SIZE_STANDARD, CLOUD_SHAPE_FACTOR }};
-    golf->welcome_screen.clouds = clouds;
+    alocncpy((void**)&golf->welcome_screen.clouds, (void*)clouds, sizeof(clouds));
     golf->welcome_screen.cloud_count = 1;
 
     //Add Tree
-    TREE trees[1] = {{ (WIDTH * 2)/3, GROUND_LINE, TREE_SIZE_STANDARD }};
-    golf->welcome_screen.trees = trees;
+    TREE trees[1] = {{ (WIDTH * 3)/4, GROUND_LINE, TREE_SIZE_STANDARD }};
+    alocncpy((void**)&golf->welcome_screen.trees, (void*)trees, sizeof(trees));
     golf->welcome_screen.tree_count = 1;
 
     //Add Lake
-    LAKE lakes[1] = {{ ((WIDTH * 2)/3) - (LAKE_WIDTH_STANDARD * 2), GROUND_LINE, LAKE_WIDTH_STANDARD, LAKE_HEIGHT_STANDARD }};
-    golf->welcome_screen.lakes = lakes;
+    LAKE lakes[1] = {{ ((WIDTH * 3)/4) - (LAKE_WIDTH_STANDARD + WELCOME_LAKE_OFFSET), GROUND_LINE, LAKE_WIDTH_STANDARD, LAKE_HEIGHT_STANDARD }};
+    alocncpy((void**)&golf->welcome_screen.lakes, (void*)lakes, sizeof(lakes));
     golf->welcome_screen.lake_count = 1;
 
     //No Dunes
-    golf.welcome_screen.dunes = 0;
+    golf->welcome_screen.dunes = 0;
     golf->welcome_screen.dune_count = 0;
 
 
@@ -117,22 +137,23 @@ void golf_init(GOLF *golf) {
     //2. Pause Screen
     //-------------------------------------------------
 
-    int pause_top = (HEIGHT - ((BUTTON_HEIGHT + BUTTON_MARGIN) * (PAUSE_BUTTON_COUNT - 1)));
+    int pause_top = (HEIGHT - ((BUTTON_HEIGHT + BUTTON_MARGIN) * (PAUSE_BUTTON_COUNT))) / 2;
 
     GAMEBUTTON pause_buttons[PAUSE_BUTTON_COUNT] = {
         {
-            (WIDTH - BUTTON_WIDTH) / 2,                               //Left
-            pause_top + (0 * (BUTTON_HEIGHT + BUTTON_MARGIN)),        //Top
-            "RESUME",                                                 //Text
+            (WIDTH - BUTTON_WIDTH) / 2,                                 //Left
+            pause_top + (0 * (BUTTON_HEIGHT + BUTTON_MARGIN)),          //Top
+            "RESUME",                                                   //Text
             BUTTON_WIDTH,
             BUTTON_HEIGHT,
             BUTTON_BACKCOLOUR,
             BUTTON_FORECOLOUR,
             BUTTON_HBACKCOLOUR,
             BUTTON_HFORECOLOUR,
-            0,                                                          //Shall be button event
+            pause_button_clicked,                                       //Handle pause screen button click
             0,                                                          //Initially don't highlight
-            1                                                           //Always visible
+            1,                                                          //Always visible
+            0                                                           //Mouse state 0 indicating mouse isn't pressed
         },
         {
             (WIDTH - BUTTON_WIDTH) / 2,                                 //Left
@@ -144,9 +165,10 @@ void golf_init(GOLF *golf) {
             BUTTON_FORECOLOUR,
             BUTTON_HBACKCOLOUR,
             BUTTON_HFORECOLOUR,
-            0,                                                          //Shall be button event
+            pause_button_clicked,                                       //Handle pause screen button click
             0,                                                          //Initially don't highlight
-            1                                                           //Always visible
+            1,                                                          //Always visible
+            0                                                           //Mouse state 0 indicating mouse isn't pressed
         },
         {
             (WIDTH - BUTTON_WIDTH) / 2,                                 //Left
@@ -158,29 +180,30 @@ void golf_init(GOLF *golf) {
             BUTTON_FORECOLOUR,
             BUTTON_HBACKCOLOUR,
             BUTTON_HFORECOLOUR,
-            0,                                                          //Shall be button event
+            pause_button_clicked,                                       //Handle pause screen button click
             0,                                                          //Initially don't highlight
-            1                                                           //Always visible
+            1,                                                          //Always visible
+            0                                                           //Mouse state 0 indicating mouse isn't pressed
         }
     };
 
-    golf->pause_screen.buttons      = pause_buttons;
+    alocncpy((void**)&golf->pause_screen.buttons, (void*)pause_buttons, sizeof(pause_buttons));
     golf->pause_screen.button_count = PAUSE_BUTTON_COUNT;
 
     //Add the ground (Reuse from previous definition)
     golf->pause_screen.ground = ground;
 
     //Add Cloud (Reuse from previous definition)
-    golf->pause_screen.clouds = clouds;
+    alocncpy((void**)&golf->pause_screen.clouds, (void*)clouds, sizeof(clouds));
     golf->pause_screen.cloud_count = 1;
 
     //Add Tree (Reuse from previous definition)
-    golf->pause_screen.trees = trees;
+    alocncpy((void**)&golf->pause_screen.trees, (void*)trees, sizeof(trees));
     golf->pause_screen.tree_count = 1;
 
     //Add Dune
-    DUNE dunes[1] = {{ ((WIDTH * 2)/3) - (LAKE_WIDTH_STANDARD * 2), GROUND_LINE, LAKE_WIDTH_STANDARD, LAKE_HEIGHT_STANDARD }};
-    golf->pause_screen.dunes = dunes;
+    DUNE dunes[1] = {{ ((WIDTH * 3)/4) - (DUNE_WIDTH_STANDARD + PAUSE_DUNE_OFFSET), GROUND_LINE, DUNE_WIDTH_STANDARD, DUNE_HEIGHT_STANDARD }};
+    alocncpy((void**)&golf->pause_screen.dunes, (void*)dunes, sizeof(dunes));
     golf->pause_screen.dune_count = 1;
 
     //No Lakes
@@ -198,3 +221,115 @@ void golf_init(GOLF *golf) {
      * 2. End Screen
      */
 }
+
+int golf_update(GOLF *golf) {
+    //Wait for mouse event
+    //Use allegro function directly as there is no reliable function in the wrapper
+    al_wait_for_event_timed(event_queue, &event, 0.00);
+
+    golf->current_weather = gameweather_now();
+
+    switch(golf->game_state) {
+        case GAME_WELCOME:
+            gamemenu_check_mouse(golf->welcome_screen);
+        break;
+        case GAME_PLAY:
+
+
+            if(event_key('p')) {
+                golf->game_state = GAME_PAUSE;
+            }
+        break;
+        case GAME_PAUSE:
+            gamemenu_check_mouse(golf->pause_screen);
+        break;
+        case GAME_END:
+
+        break;
+        case GAME_LEADERBOARD:
+
+        break;
+    }
+
+    return golf->gametorun;
+}
+
+void golf_paint(GOLF *golf) {
+
+    cleardevice();
+
+    switch(golf->game_state) {
+        case GAME_WELCOME:
+            gamemenu_paint(golf->welcome_screen, golf->current_weather);
+        break;
+        case GAME_PLAY:
+
+        break;
+        case GAME_PAUSE:
+            gamemenu_paint(golf->pause_screen, golf->current_weather);
+        break;
+        case GAME_END:
+
+        break;
+        case GAME_LEADERBOARD:
+
+        break;
+    }
+
+    update_display();
+}
+
+void golf_destroy(GOLF *golf) {
+    //-------------------------------------------------
+    //  Close Keyboard, Mouse and Graphics Window
+    //-------------------------------------------------
+    closekeyboard();
+    closemouse();
+    closegraph();
+    //-------------------------------------------------
+    //  Release all pointers
+    //-------------------------------------------------
+    gamemenu_destroy(&golf->welcome_screen);
+    gamemenu_destroy(&golf->pause_screen);
+    //-------------------------------------------------
+    //  Release all Image and Audio resources
+    //-------------------------------------------------
+
+}
+
+/**
+ *  Handle Welcome Screen Button Click
+ ******************************************************/
+void welcome_button_clicked(GAMEBUTTON button) {
+    if(strcmp(button.text, "CONTINUE") == 0) {
+        gamelevel_reset(&golf_game->levels[golf_game->current_level]);
+        golf_game->game_state = GAME_PLAY;
+    }
+    if(strcmp(button.text, "NEW GAME") == 0) {
+        golf_game->current_level = 0;
+        gamelevel_reset(&golf_game->levels[golf_game->current_level]);
+        golf_game->game_state = GAME_PLAY;
+    }
+    if(strcmp(button.text, "LEADER BOARD") == 0) {
+        golf_game->game_state = GAME_LEADERBOARD;
+    }
+    if(strcmp(button.text, "EXIT") == 0) {
+        golf_game->gametorun = 0;
+    }
+}
+
+/**
+ *  Handle Pause Screen Button Click
+ ******************************************************/
+ void pause_button_clicked(GAMEBUTTON button) {
+    if(strcmp(button.text, "RESUME") == 0) {
+        golf_game->game_state = GAME_PLAY;
+    }
+    if(strcmp(button.text, "RE-START LEVEL") == 0) {
+        gamelevel_reset(&golf_game->levels[golf_game->current_level]);
+        golf_game->game_state = GAME_PLAY;
+    }
+    if(strcmp(button.text, "EXIT LEVEL") == 0) {
+        golf_game->game_state = GAME_WELCOME;
+    }
+ }

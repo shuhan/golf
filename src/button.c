@@ -27,33 +27,28 @@ void gamebutton_paint(GAMEBUTTON button) {
 void gamemenu_paint(GAMEMENU menu, GAMEWEATHER weather) {
 
     setbkcolor(LIGHTBLUE);
-    /*
+
     ground_paint(&(menu.ground));
 
     int i;
 
-    for(i = 0; i < menu.hill_count; i++) {
-        tree_paint(menu.hills + i);
-    }
-
     for(i = 0; i < menu.cloud_count; i++) {
         cloud_influence(menu.clouds + i, weather, WIND_INFLUENCE_ON_CLOUD);
-        cloud_paint(menu.clouds + i);
+        cloud_paint(menu.clouds[i]);
     }
 
     for(i = 0; i < menu.dune_count; i++) {
-        tree_paint(menu.dunes + i);
+        dune_paint(menu.dunes + i);
     }
 
     for(i = 0; i < menu.lake_count; i++) {
-        tree_paint(menu.lakes + i);
+        lake_paint(menu.lakes + i);
     }
 
     for(i = 0; i < menu.tree_count; i++) {
         tree_paint(menu.trees + i);
     }
-    */
-    int i;
+
     for(i = 0; i < menu.button_count; i++) {
         gamebutton_paint(menu.buttons[i]);
     }
@@ -78,17 +73,35 @@ void gamemenu_check_mouse(GAMEMENU menu) {
             menu.buttons[i].highlight = 1;
 
             if(event_mouse_left_button_down()) {                //If mouse button is down, fire the click event
-                mouse_state++;                                  //Event is fired on mouse down and up, there fore keep count to make sure a down and up is required for a click
-                if(mouse_state >= 2) {
+                menu.buttons[i].mouse_state++;                  //Event is fired on mouse down and up, there fore keep count to make sure a down and up is required for a click
+                if(menu.buttons[i].mouse_state >= 2) {
                     if(menu.buttons[i].on_click) menu.buttons[i].on_click(menu.buttons[i]);
-                    mouse_state = 0;                            //Reset mouse state once click is counted
+                    menu.buttons[i].mouse_state = 0;            //Reset mouse state once click is counted
                 }
                 event.mouse.button = 0;                         //Nasty hack stop event from sticking
             }
 
         } else {
             menu.buttons[i].highlight = 0;
-            mouse_state = 0;                                    //Reset mouse state so that a mouse down and up require on the same button to be counted as a click
+            menu.buttons[i].mouse_state = 0;                    //Reset mouse state so that a mouse down and up require on the same button to be counted as a click
         }
+    }
+}
+
+void gamemenu_destroy(GAMEMENU *menu) {
+    if(menu->clouds) {
+        free(menu->clouds);
+    }
+    if(menu->trees) {
+        free(menu->trees);
+    }
+    if(menu->dunes) {
+        free(menu->dunes);
+    }
+    if(menu->lakes) {
+        free(menu->lakes);
+    }
+    if(menu->buttons) {
+        free(menu->buttons);
     }
 }

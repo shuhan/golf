@@ -9,8 +9,6 @@
 #include "cloud.h"
 #include "weather.h"
 
-int mouse_state;                        //Mouse event fires on down and up, a click is down followed by up
-
 typedef struct {
 
     long    left;                       //Left corner of the button
@@ -25,6 +23,7 @@ typedef struct {
     void    (*on_click)(GAMEBUTTON);    //On click event
     char    highlight;                  //If it shall be highlighted
     char    visible;
+    int     mouse_state;
 } GAMEBUTTON;
 
 typedef struct {
@@ -48,5 +47,7 @@ void gamebutton_paint(GAMEBUTTON button);
 int gamebutton_mousein(GAMEBUTTON button);
 
 void gamemenu_check_mouse(GAMEMENU menu);
+
+void gamemenu_destroy(GAMEMENU *menu);
 
 #endif // BUTTON_H_INCLUDED

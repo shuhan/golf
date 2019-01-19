@@ -15,7 +15,32 @@
 #include "dune.h"
 #include "hill.h"
 #include "hole.h"
+#include "golf.h"
 
+int *hello = 0;
+
+int main(void) {
+    GOLF golf;
+
+    golf_init(&golf);
+
+    while(true) {
+
+        if(!golf_update(&golf)) break;
+
+        golf_paint(&golf);
+
+        if(event_key('x')) {
+            break;
+        }
+    }
+
+    golf_destroy(&golf);
+
+    return 0;
+}
+
+/*
 void print_x(GAMEBUTTON x);
 void test_hit(void);
 
@@ -33,7 +58,6 @@ BALL *ball_ref;
 METER *meter_ref;
 
 int main(void) {
-
     initwindow(WIDTH, HEIGHT);
     initfont();
     initkeyboard();
@@ -146,6 +170,7 @@ int main(void) {
 
     animation_destroy(&clip);
     closekeyboard();
+    closemouse();
     closegraph();
 
     return 0;
@@ -172,3 +197,4 @@ void print_x(GAMEBUTTON x) {
         meter_ref->selecting = 1;
     }
 }
+*/

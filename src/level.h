@@ -40,9 +40,12 @@ typedef struct {
     int         hill_count;
     CLOUD       *clouds;
     int         cloud_count;
+    int         max_points;
     unsigned    game_state;
 
 } GAMELEVEL;
+
+void gamelevel_reset(GAMELEVEL *level);
 
 void gamelevel_update(GAMELEVEL *level);
 

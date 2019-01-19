@@ -17,7 +17,8 @@ typedef struct {
     GAMELEVEL       levels[9];
     int             current_level;
     unsigned        game_state;
-
+    GAMEWEATHER     current_weather;
+    int             gametorun;
     /**
      * Require additional two screens
      * 1. Leader board
@@ -26,14 +27,24 @@ typedef struct {
 
 } GOLF;
 
+//-------------------------------------------------
+//  An instance of golf, required for global events
+//-------------------------------------------------
+GOLF *golf_game;
+
 void golf_init(GOLF *golf);
 
-void golf_update(GOLF *golf);
+int golf_update(GOLF *golf);
 
 void golf_paint(GOLF *golf);
 
-//==============================================================================
-//  Internal functions required for processing inputs and events
-//==============================================================================
+void golf_destroy(GOLF *golf);
+
+//-----------------------------------------------------
+//  Internal functions for processing inputs and events
+//-----------------------------------------------------
+void welcome_button_clicked(GAMEBUTTON button);
+
+void pause_button_clicked(GAMEBUTTON button);
 
 #endif // GAME_H_INCLUDED

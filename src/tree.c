@@ -3,6 +3,8 @@
 
 void tree_bound(TREE *tree) {
 
+    TREE t = *tree;
+
     tree->stamp_width   = tree->size;
     tree->stamp_height  = tree->stamp_width * 5;
     tree->leaves_radius = tree->stamp_width * 2;

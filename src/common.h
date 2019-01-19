@@ -1,6 +1,8 @@
 #ifndef COMMON_H_INCLUDED
 #define COMMON_H_INCLUDED
 
+#include <graphics_lib.h>
+
 //-----------------------------------------------
 //  Screen Size
 //-----------------------------------------------
@@ -24,19 +26,11 @@
 //-----------------------------------------------
 #define BUTTON_BACKCOLOUR       DARKDIRT
 #define BUTTON_FORECOLOUR       WHITE
-#define BUTTON_HBACKCOLOUR      GRASS
+#define BUTTON_HBACKCOLOUR      DIRT
 #define BUTTON_HFORECOLOUR      WHITE
 #define BUTTON_WIDTH            250
 #define BUTTON_HEIGHT           40
 #define BUTTON_MARGIN           15
-//-----------------------------------------------
-//  Welcome Screen Constants
-//-----------------------------------------------
-#define WELCOME_BUTTON_COUNT    4
-//-----------------------------------------------
-//  Pause Screen Constants
-//-----------------------------------------------
-#define PAUSE_BUTTON_COUNT      3
 //-----------------------------------------------
 //  Object Size Standards
 //-----------------------------------------------
@@ -57,6 +51,25 @@
 #define HOLE_HEIGHT_STANDARD    15
 #define GROUND_TOP_LINE         (HEIGHT*2)/3
 #define GROUND_LINE             (HEIGHT*5)/6
+//-----------------------------------------------
+//  Welcome Screen Constants
+//-----------------------------------------------
+#define WELCOME_BUTTON_COUNT    4
+#define WELCOME_LAKE_OFFSET     LAKE_WIDTH_STANDARD*0.2
+//-----------------------------------------------
+//  Pause Screen Constants
+//-----------------------------------------------
+#define PAUSE_BUTTON_COUNT      3
+#define PAUSE_DUNE_OFFSET       DUNE_WIDTH_STANDARD*0.2
+//-----------------------------------------------
+//  Play Screen Constants
+//-----------------------------------------------
+#define PLAYER_X_OFFSET         40
+#define PLAYER_Y_OFFSET         55
+#define HOLE_X                  (WIDTH*9)/10
+#define HOLE_Y                  GROUND_LINE
+#define BALL_X                  WIDTH/6
+#define BALL_Y                  GROUND_LINE
 
 
 typedef struct {
@@ -97,5 +110,7 @@ int hit_gametriangle(GAMETRIANGLE triangle, GAMECIRCLE circle);
 int hit_gamerect(GAMERECT rect, GAMECIRCLE circle);
 
 int hit_gamecircle(GAMECIRCLE cir, GAMECIRCLE circle);
+
+void alocncpy(void** dest, void* from, size_t size);
 
 #endif // COMMON_H_INCLUDED

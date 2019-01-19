@@ -51,3 +51,8 @@ int hit_gamerect(GAMERECT rect, GAMECIRCLE circle) {
 int hit_gamecircle(GAMECIRCLE cir, GAMECIRCLE circle) {
     return sqrt(pow(cir.centre.x - circle.centre.x, 2) + pow(cir.centre.y - circle.centre.y, 2)) <= cir.radius + circle.radius;
 }
+
+void alocncpy(void** dest, void* from, size_t size) {
+    *dest = malloc(size);
+    memcpy(*dest, from, size);
+}
