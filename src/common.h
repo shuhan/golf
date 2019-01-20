@@ -16,11 +16,21 @@
 #define GROUND_LOSS             0.2
 #define SAND_LOSS               0.5
 #define HILL_LOSS               0.2
+#define HILL_SHAKE              3
 #define TREE_LOSS               0.3
+#define TREE_LEAVES_SHAKE       5
 #define MAX_HIT_SPEED           100
 #define WIND_INFLUENCE_ON_BALL  0.05
 #define WIND_INFLUENCE_ON_CLOUD 0.1
-#define HILL_CONSUME_THREASHOLD 5                                       //If speed is less than this, ball will be lost in hill
+#define HILL_CONSUME_THREASHOLD 3                                       //If speed is less than this, ball will be lost in hill
+//-----------------------------------------------
+//  Additional Game Constants
+//-----------------------------------------------
+#define KEYBOARD_ESC_KEY        59
+#define KEYBOARD_ENTER_KEY      67
+#define KEYBOARD_BACKSPACE      63
+#define MAX_NAME_LENGTH         128
+#define MAX_SCORES              14
 //-----------------------------------------------
 //  Buttons Configuration
 //-----------------------------------------------
@@ -100,11 +110,26 @@
 #define SPEED_METER_MAX         MAX_HIT_SPEED
 #define SPEED_METER_MIN         0
 #define NUMBER_OF_LEVELS        9
-#define HIT_LOSS_CONSTANT       10
+#define HIT_LOSS_CONSTANT       2                   //Score loss is quadratic
 #define SCORE_TEXT_OFFSET       15
 #define SCORE_TEXT_COLOUR       DARKDIRT
 #define SCORE_TEXT_SHADOW       DIRT
 #define WIN_TEXT_COLOUR         RED
+//-----------------------------------------------
+//  End Screen Constants
+//-----------------------------------------------
+#define TEXTBOX_WIDTH           250
+#define TEXTBOX_HEIGHT          40
+#define TEXTBOX_COLOUR          DARKDIRT
+#define TEXTBOX_FORECOLOUR      WHITE
+//-----------------------------------------------
+//  Leaderboard Constants
+//-----------------------------------------------
+#define LEADERBOARD_COLOUR      DARKDIRT
+#define LEADERBOARD_FORECOLOUR  WHITE
+#define LEADERBOARD_WIDTH       (WIDTH/3)
+#define LEADERBOARD_HEIGHT      ((HEIGHT*3)/4)
+#define LEADERBOARD_TEXT_OFFSET 20
 //-----------------------------------------------
 //  Level 1 Constants
 //-----------------------------------------------
@@ -136,6 +161,7 @@
 //-----------------------------------------------
 #define LEVEL_7_HILL_X          (WIDTH)/3
 #define LEVEL_7_TREE_X          (WIDTH)/2
+#define LEVEL_7_DUNE_X          (WIDTH*2)/3
 //-----------------------------------------------
 //  Level 8 Constants
 //-----------------------------------------------
@@ -144,7 +170,7 @@
 //-----------------------------------------------
 //  Level 9 Constants
 //-----------------------------------------------
-#define LEVEL_9_TREE_X          (WIDTH)/3
+#define LEVEL_9_TREE_X          (WIDTH)/3.2
 #define LEVEL_9_DUNE_X          (WIDTH)/2
 #define LEVEL_9_HILL_X          (WIDTH*2)/3
 
@@ -169,6 +195,11 @@ typedef struct {
     int         radius;
 } GAMECIRCLE;
 
+typedef struct {
+    char    name[MAX_NAME_LENGTH];
+    int     score;
+} GAMESCORE;
+
 int get_text_width(const char* text);
 
 int get_line_height(void);
@@ -190,5 +221,7 @@ int hit_gamecircle(GAMECIRCLE cir, GAMECIRCLE circle);
 void alocncpy(void** dest, void* from, size_t size);
 
 long long current_timestamp();
+
+void sort_score(GAMESCORE *scores, int count);
 
 #endif // COMMON_H_INCLUDED

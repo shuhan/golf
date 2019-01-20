@@ -64,3 +64,25 @@ long long current_timestamp() {
     long long milliseconds = tv.tv_sec*1000LL + tv.tv_usec/1000;
     return milliseconds;
 }
+
+/**
+ * Recursive Bubble Sort to Sort Scores in Descending Order
+ * Ref: https://www.geeksforgeeks.org/recursive-bubble-sort/
+ ************************************************************/
+void sort_score(GAMESCORE *scores, int count) {
+    int i, j;
+    GAMESCORE temp;
+
+    for (i = 0; i < count; ++i)
+    {
+        for (j = i + 1; j < count; ++j)
+        {
+            if (scores[i].score < scores[j].score)
+            {
+                temp =  scores[i];
+                scores[i] = scores[j];
+                scores[j] = temp;
+            }
+        }
+    }
+}

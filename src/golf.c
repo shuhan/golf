@@ -89,7 +89,7 @@ void golf_init(GOLF *golf) {
         {
             (WIDTH - BUTTON_WIDTH) / 2,                                 //Left
             welcome_top + (2 * (BUTTON_HEIGHT + BUTTON_MARGIN)),        //Top
-            "LEADER BOARD",                                             //Text
+            "LEADERBOARD",                                             //Text
             BUTTON_WIDTH,
             BUTTON_HEIGHT,
             BUTTON_BACKCOLOUR,
@@ -203,7 +203,7 @@ void golf_init(GOLF *golf) {
     golf->pause_screen.button_count = PAUSE_BUTTON_COUNT;
 
     //Add the ground (Reuse from previous definition)
-    golf->pause_screen.ground = ground;
+    golf->pause_screen.ground   = ground;
 
     //Add Cloud (Reuse from previous definition)
     alocncpy((void**)&golf->pause_screen.clouds, (void*)clouds, sizeof(clouds));
@@ -226,12 +226,22 @@ void golf_init(GOLF *golf) {
     //3. Create Game Screens
     //-------------------------------------------------
     create_game_levels(golf->levels, play_on_hit, play_on_ball_stop, play_on_level_complete);
-
+    //-------------------------------------------------
+    //4. Create End Screen
+    //-------------------------------------------------
+    golf->end_screen.ground             = ground;               //Reuse ground from previous definition
+    strcpy(golf->end_screen.name, "");                          //Set name to empty string
+    golf->end_screen.score              = golf->total_score;
+    golf->end_screen.on_completed       = end_on_completed;
+    //-------------------------------------------------
+    //5. Leaderboard Screen
+    //-------------------------------------------------
+    leaderboard_read(&golf->leaderboard, LEADERBOARD_FILE_PATH);
+    golf->leaderboard.ground = ground;
     /**
-     * Additional Pending Game Screens
+     * Additional Pending Tasks
      * ------------------------------------------------
-     * 1. Leader board
-     * 2. End Screen
+     * 1. Add sound
      */
 }
 
@@ -244,22 +254,29 @@ int golf_update(GOLF *golf) {
 
     switch(golf->game_state) {
         case GAME_WELCOME:
+            golf->welcome_screen.buttons[0].visible = golf->current_level > 0;
             gamemenu_check_mouse(golf->welcome_screen);
         break;
         case GAME_PLAY:
             gamelevel_update(&golf->levels[golf->current_level], golf->current_weather);
-            if(event_key('p')) {
+            if(event_key_down() && event.keyboard.keycode == KEYBOARD_ESC_KEY) {
                 golf->game_state = GAME_PAUSE;
             }
         break;
         case GAME_PAUSE:
             gamemenu_check_mouse(golf->pause_screen);
+            if(event_key_down() && event.keyboard.keycode == KEYBOARD_ESC_KEY) {
+                golf->game_state = GAME_PLAY;
+            }
         break;
         case GAME_END:
-
+            golf->end_screen.score = golf->total_score;
+            endscreen_update(&golf->end_screen);
         break;
         case GAME_LEADERBOARD:
-            if(event_mouse_right_button_down()) {
+            leaderboard_update(&golf->leaderboard);
+            //Right click or press ESC on leaderboard to go back
+            if(event_mouse_right_button_down() || (event_key_down() && event.keyboard.keycode == KEYBOARD_ESC_KEY)) {
                 golf->game_state = GAME_WELCOME;
             }
         break;
@@ -303,10 +320,10 @@ void golf_paint(GOLF *golf) {
             gamemenu_paint(golf->pause_screen, golf->current_weather);
         break;
         case GAME_END:
-
+            endscreen_paint(golf->end_screen);
         break;
         case GAME_LEADERBOARD:
-
+            leaderboard_paint(golf->leaderboard);
         break;
     }
 
@@ -346,7 +363,7 @@ void welcome_button_clicked(GAMEBUTTON button) {
         gamelevel_reset(&golf_game->levels[golf_game->current_level]);
         golf_game->game_state = GAME_PLAY;
     }
-    if(strcmp(button.text, "LEADER BOARD") == 0) {
+    if(strcmp(button.text, "LEADERBOARD") == 0) {
         golf_game->game_state = GAME_LEADERBOARD;
     }
     if(strcmp(button.text, "EXIT") == 0) {
@@ -383,10 +400,10 @@ void play_on_hit() {
  *  Handle Play Screen Ball Stop Event
  ******************************************************/
 void play_on_ball_stop(BALL ball) {
+    golf_game->levels[golf_game->current_level].player.current_hit_count++;
     switch(ball.state) {
         case BALL_ON_GROUND:
         case BALL_ON_SAND:
-            golf_game->levels[golf_game->current_level].player.current_hit_count++;
             //Update player
             golf_game->levels[golf_game->current_level].player.animation.left = golf_game->levels[golf_game->current_level].ball.shape.centre.x - PLAYER_X_OFFSET;
             golf_game->levels[golf_game->current_level].player.animation.top = golf_game->levels[golf_game->current_level].ball.shape.centre.y - PLAYER_Y_OFFSET;
@@ -400,7 +417,7 @@ void play_on_ball_stop(BALL ball) {
             golf_game->levels[golf_game->current_level].game_state = GAMESTATE_SELECT_ANGLE;
         break;
         case BALL_IN_HOLE:
-            golf_game->total_score += (golf_game->levels[golf_game->current_level].max_points - (golf_game->levels[golf_game->current_level].player.current_hit_count * HIT_LOSS_CONSTANT));
+            golf_game->total_score += max(0, golf_game->levels[golf_game->current_level].max_points - pow(golf_game->levels[golf_game->current_level].player.current_hit_count * HIT_LOSS_CONSTANT, 2));
             golf_game->levels[golf_game->current_level].game_state = GAMESTATE_WIN;
         break;
         case BALL_LOST:;
@@ -434,4 +451,23 @@ void play_on_level_complete() {
         fprintf(file_handle, "");
         fclose(file_handle);
     }
+}
+
+/**
+*  Handle End Screen Completed Event
+******************************************************/
+void end_on_completed(ENDSCREEN screen) {
+    GAMESCORE score;
+    strcpy(score.name, screen.name);
+    score.score = screen.score;
+
+    leaderboard_add_score(&golf_game->leaderboard, score);
+
+    leaderboard_write(&golf_game->leaderboard, LEADERBOARD_FILE_PATH);
+
+    //Reset Game Score & Level
+    golf_game->total_score = 0;
+    golf_game->current_level = 0;
+
+    golf_game->game_state = GAME_LEADERBOARD;
 }

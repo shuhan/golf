@@ -4,6 +4,8 @@
 #include "button.h"
 #include "level.h"
 #include "common.h"
+#include "endscreen.h"
+#include "leaderboard.h"
 
 #define GAME_WELCOME        0
 #define GAME_PLAY           1
@@ -15,6 +17,8 @@ typedef struct {
 
     GAMEMENU        welcome_screen;
     GAMEMENU        pause_screen;
+    ENDSCREEN       end_screen;
+    LEADERBOARD     leaderboard;
     PLAYER          player;
     GAMELEVEL       levels[NUMBER_OF_LEVELS];
     int             current_level;
@@ -23,9 +27,8 @@ typedef struct {
     GAMEWEATHER     current_weather;
     int             gametorun;
     /**
-     * Require additional two screens
-     * 1. Leader board
-     * 2. End Screen
+     * Additional Pending Tasks
+     * 1. Add Sound
      */
 
 } GOLF;
@@ -55,5 +58,7 @@ void play_on_hit();
 void play_on_ball_stop(BALL ball);
 
 void play_on_level_complete();
+
+void end_on_completed(ENDSCREEN screen);
 
 #endif // GAME_H_INCLUDED

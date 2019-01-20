@@ -1029,7 +1029,7 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1547957814 source:d:\study\c programming for msc\golf\src\assignment.c
+1548023849 source:d:\study\c programming for msc\golf\src\assignment.c
 	<graphics_lib.h>
 	<amio_lib.h>
 	"common.h"
@@ -1046,8 +1046,9 @@
 	"hill.h"
 	"hole.h"
 	"golf.h"
+	"leaderboard.h"
 
-1547960120 d:\study\c programming for msc\golf\src\common.h
+1548026432 d:\study\c programming for msc\golf\src\common.h
 	<graphics_lib.h>
 
 1547945002 d:\study\c programming for msc\golf\src\button.h
@@ -1064,7 +1065,7 @@
 	"weather.h"
 	<graphics_lib.h>
 
-1547945387 source:d:\study\c programming for msc\golf\src\common.c
+1548022276 source:d:\study\c programming for msc\golf\src\common.c
 	"common.h"
 	<graphics_lib.h>
 	<sys/time.h>
@@ -1119,7 +1120,7 @@
 
 1547338137 d:\study\c programming for msc\golf\src\meters.h
 
-1547956099 source:d:\study\c programming for msc\golf\src\hill.c
+1548025394 source:d:\study\c programming for msc\golf\src\hill.c
 	"hill.h"
 	<graphics_lib.h>
 
@@ -1139,7 +1140,7 @@
 1547521632 d:\study\c programming for msc\golf\src\lake.h
 	"ball.h"
 
-1547954020 source:d:\study\c programming for msc\golf\src\tree.c
+1548025283 source:d:\study\c programming for msc\golf\src\tree.c
 	"tree.h"
 	<graphics_lib.h>
 
@@ -1157,7 +1158,7 @@
 	"hole.h"
 	<graphics_lib.h>
 
-1547955842 source:d:\study\c programming for msc\golf\src\level.c
+1548009360 source:d:\study\c programming for msc\golf\src\level.c
 	"level.h"
 
 1547953138 d:\study\c programming for msc\golf\src\level.h
@@ -1183,7 +1184,7 @@
 	"allegro5/allegro.h"
 	"allegro5/allegro_audio.h"
 
-1547960064 source:d:\study\c programming for msc\golf\src\level_factory.c
+1548006141 source:d:\study\c programming for msc\golf\src\level_factory.c
 	"level_factory.h"
 
 1547953202 d:\study\c programming for msc\golf\src\level_factory.h
@@ -1196,14 +1197,31 @@
 
 1547691406 d:\study\c programming for msc\golf\src\menu_factory.h
 
-1547959720 source:d:\study\c programming for msc\golf\src\golf.c
+1548026217 source:d:\study\c programming for msc\golf\src\golf.c
 	"golf.h"
 	<graphics_lib.h>
 	<amio_lib.h>
 	"level_factory.h"
 
-1547953156 d:\study\c programming for msc\golf\src\golf.h
+1548022755 d:\study\c programming for msc\golf\src\golf.h
 	"button.h"
 	"level.h"
 	"common.h"
+	"endscreen.h"
+	"leaderboard.h"
+
+1548017093 source:d:\study\c programming for msc\golf\src\endscreen.c
+	"endscreen.h"
+	<graphics_lib.h>
+
+1548020116 d:\study\c programming for msc\golf\src\endscreen.h
+	"common.h"
+	"ground.h"
+
+1548023740 source:d:\study\c programming for msc\golf\src\leaderboard.c
+	"leaderboard.h"
+
+1548020569 d:\study\c programming for msc\golf\src\leaderboard.h
+	"common.h"
+	"ground.h"
 

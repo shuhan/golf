@@ -15,21 +15,21 @@ void tree_bound(TREE *tree) {
     int stamp_top_y = tree->y - tree->stamp_height;
 
     GAMECIRCLE c0 = {{stamp_top_x - tree->leaves_radius, stamp_top_y}, tree->leaves_radius};
-    tree->leaves[0] = c0;
-    GAMECIRCLE c1 = {{stamp_top_x + tree->leaves_radius, stamp_top_y}, tree->leaves_radius};
-    tree->leaves[1] = c1;
-    GAMECIRCLE c2 = {{stamp_top_x - (1.5 * tree->leaves_radius), stamp_top_y - tree->leaves_radius}, tree->leaves_radius};
-    tree->leaves[2] = c2;
-    GAMECIRCLE c3 = {{stamp_top_x + (1.5 * tree->leaves_radius), stamp_top_y - tree->leaves_radius}, tree->leaves_radius};
-    tree->leaves[3] = c3;
-    GAMECIRCLE c4 = {{stamp_top_x - tree->leaves_radius, stamp_top_y - (2 * tree->leaves_radius)}, tree->leaves_radius};
-    tree->leaves[4] = c4;
-    GAMECIRCLE c5 = {{stamp_top_x + tree->leaves_radius, stamp_top_y - (2 * tree->leaves_radius)}, tree->leaves_radius};
-    tree->leaves[5] = c5;
-    GAMECIRCLE c6 = {{stamp_top_x, stamp_top_y - tree->leaves_radius}, tree->leaves_radius};
-    tree->leaves[6] = c6;
-    GAMECIRCLE c7 = {{stamp_top_x, stamp_top_y - (3 * tree->leaves_radius)}, tree->leaves_radius};
-    tree->leaves[7] = c7;
+    tree->leaves[0] = c0;   //Left Bottom
+    GAMECIRCLE c1 = {{stamp_top_x - (1.5 * tree->leaves_radius), stamp_top_y - tree->leaves_radius}, tree->leaves_radius};
+    tree->leaves[1] = c1;   //Left Second
+    GAMECIRCLE c2 = {{stamp_top_x - tree->leaves_radius, stamp_top_y - (2 * tree->leaves_radius)}, tree->leaves_radius};
+    tree->leaves[2] = c2;   //Left Third
+    GAMECIRCLE c3 = {{stamp_top_x, stamp_top_y - (3 * tree->leaves_radius)}, tree->leaves_radius};
+    tree->leaves[3] = c3;   //Centre Top
+    GAMECIRCLE c4 = {{stamp_top_x + tree->leaves_radius, stamp_top_y - (2 * tree->leaves_radius)}, tree->leaves_radius};
+    tree->leaves[4] = c4;   //Right Third
+    GAMECIRCLE c5 = {{stamp_top_x + (1.5 * tree->leaves_radius), stamp_top_y - tree->leaves_radius}, tree->leaves_radius};
+    tree->leaves[5] = c5;   //Right Second
+    GAMECIRCLE c6 = {{stamp_top_x + tree->leaves_radius, stamp_top_y}, tree->leaves_radius};
+    tree->leaves[6] = c6;   //Right Bottom
+    GAMECIRCLE c7 = {{stamp_top_x, stamp_top_y - tree->leaves_radius}, tree->leaves_radius};
+    tree->leaves[7] = c7;   //Centre Fillup
 }
 
 void tree_paint(TREE *tree) {
@@ -55,9 +55,18 @@ int tree_hit(TREE tree, BALL *ball) {
     int i;
     for(i = 0; i < 8; i++) {
         if(hit_gamecircle(tree.leaves[i], ball->shape)) {
-            ball->state = BALL_LOST;
-            ball->horizontal_speed  = 0;
-            ball->vertical_speed    = 0;
+            ball->horizontal_speed = abs(ball->horizontal_speed * (1 - TREE_LOSS)) + TREE_LEAVES_SHAKE;
+            if(i < 3) {
+                ball->horizontal_speed *= -1;
+            }
+            ball->vertical_speed = abs(ball->vertical_speed * (1 - TREE_LOSS));
+            if(i == 0 || i == 6) {
+                ball->vertical_speed *= -1;
+            }
+            //ball->state = BALL_LOST;    //Ball is lost when it hits the leaves
+            //ball->horizontal_speed  = 0;
+            //ball->vertical_speed    = 0;
+
             return 1;
         }
     }

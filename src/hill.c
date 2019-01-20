@@ -22,7 +22,9 @@ int hill_hit(HILL hill, BALL *ball) {
     int retval = hit_gametriangle(hill.peaks[0], ball->shape) || hit_gametriangle(hill.peaks[1], ball->shape);
 
     if(retval) {
-        ball->horizontal_speed *= -1 * (1 - HILL_LOSS);
+        ball->horizontal_speed = abs(ball->horizontal_speed * (1 - HILL_LOSS)) + HILL_SHAKE;
+
+        if(ball->shape.centre.x < hill.x) ball->horizontal_speed *= (-1);
     }
     //With first pace
     if(ball->shape.centre.x > hill.x - hill.radius && ball->shape.centre.x < hill.x + hill.radius && abs(ball->horizontal_speed) < HILL_CONSUME_THREASHOLD) {

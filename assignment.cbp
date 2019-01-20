@@ -879,6 +879,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/dune.h" />
+		<Unit filename="src/endscreen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/endscreen.h" />
 		<Unit filename="src/golf.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -899,6 +903,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/lake.h" />
+		<Unit filename="src/leaderboard.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/leaderboard.h" />
 		<Unit filename="src/level.c">
 			<Option compilerVar="CC" />
 		</Unit>

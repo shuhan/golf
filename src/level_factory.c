@@ -150,6 +150,10 @@ void create_game_levels(GAMELEVEL levels[NUMBER_OF_LEVELS], void (*on_activation
                 HILL hills7[1] = {{ LEVEL_7_HILL_X, GROUND_LINE, HILL_RADIUS_STANDARD, HILL_HEIGHT_STANDARD, HILL_PEAK_DISTANCE }};
                 alocncpy((void**)&levels[i].hills, (void*)hills7, sizeof(hills7));
                 levels[i].hill_count = 1;
+
+                DUNE dunes7[1] = {{ LEVEL_7_DUNE_X, GROUND_LINE, DUNE_WIDTH_STANDARD, DUNE_HEIGHT_STANDARD }};
+                alocncpy((void**)&levels[i].dunes, (void*)dunes7, sizeof(dunes7));
+                levels[i].dune_count = 1;
             break;
             case 7: ; //C don't allow declaration immediately after a level
                 TREE trees8[1] = {{ LEVEL_8_TREE_X, GROUND_LINE, TREE_SIZE_SMALL }};

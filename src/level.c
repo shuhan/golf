@@ -127,7 +127,7 @@ void gamelevel_paint(GAMELEVEL *level) {
 
             setcolor(WIN_TEXT_COLOUR);
 
-            outtextxy(((WIDTH - text_width) / 2), ((HEIGHT - line_height) / 2), congrets);
+            outtextxy(((WIDTH - text_width) / 2), ((HEIGHT - line_height) / 3), congrets);
 
         break;
     }
