@@ -42,6 +42,8 @@
 #define GRAPHICS_FRAME_PATH_WIN "data/res/win.png"
 #define MAX_FRAME_COUNT         4
 #define FRAME_PROGRESS_RATE     0.05
+#define SAVE_FILE_PATH          "save.golf"
+#define LEADERBOARD_FILE_PATH   "leaderboard.golf"
 //-----------------------------------------------
 //  Object Size Standards
 //-----------------------------------------------
@@ -52,6 +54,8 @@
 #define TREE_SIZE_SMALL         20
 #define DUNE_WIDTH_STANDARD     150
 #define DUNE_HEIGHT_STANDARD    75
+#define DUNE_WIDTH_SMALL        90
+#define DUNE_HEIGHT_SMALL       45
 #define LAKE_WIDTH_STANDARD     150
 #define LAKE_HEIGHT_STANDARD    75
 #define HILL_RADIUS_SMALL       100
@@ -141,6 +145,7 @@
 //  Level 9 Constants
 //-----------------------------------------------
 #define LEVEL_9_TREE_X          (WIDTH)/3
+#define LEVEL_9_DUNE_X          (WIDTH)/2
 #define LEVEL_9_HILL_X          (WIDTH*2)/3
 
 typedef struct {

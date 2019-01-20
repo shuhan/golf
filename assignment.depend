@@ -1047,7 +1047,7 @@
 	"hole.h"
 	"golf.h"
 
-1547958478 d:\study\c programming for msc\golf\src\common.h
+1547960120 d:\study\c programming for msc\golf\src\common.h
 	<graphics_lib.h>
 
 1547945002 d:\study\c programming for msc\golf\src\button.h
@@ -1183,7 +1183,7 @@
 	"allegro5/allegro.h"
 	"allegro5/allegro_audio.h"
 
-1547958371 source:d:\study\c programming for msc\golf\src\level_factory.c
+1547960064 source:d:\study\c programming for msc\golf\src\level_factory.c
 	"level_factory.h"
 
 1547953202 d:\study\c programming for msc\golf\src\level_factory.h
@@ -1196,7 +1196,7 @@
 
 1547691406 d:\study\c programming for msc\golf\src\menu_factory.h
 
-1547958051 source:d:\study\c programming for msc\golf\src\golf.c
+1547959720 source:d:\study\c programming for msc\golf\src\golf.c
 	"golf.h"
 	<graphics_lib.h>
 	<amio_lib.h>

@@ -165,6 +165,10 @@ void create_game_levels(GAMELEVEL levels[NUMBER_OF_LEVELS], void (*on_activation
                 alocncpy((void**)&levels[i].trees, (void*)trees9, sizeof(trees9));
                 levels[i].tree_count = 1;
 
+                DUNE dunes9[1] = {{ LEVEL_9_DUNE_X, GROUND_LINE, DUNE_WIDTH_SMALL, DUNE_HEIGHT_SMALL }};
+                alocncpy((void**)&levels[i].dunes, (void*)dunes9, sizeof(dunes9));
+                levels[i].dune_count = 1;
+
                 HILL hills9[1] = {{ LEVEL_9_HILL_X, GROUND_LINE, HILL_RADIUS_SMALL, HILL_HEIGHT_SMALL, HILL_PEAK_DISTANCE }};
                 alocncpy((void**)&levels[i].hills, (void*)hills9, sizeof(hills9));
                 levels[i].hill_count = 1;

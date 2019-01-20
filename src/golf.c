@@ -40,6 +40,16 @@ void golf_init(GOLF *golf) {
     //-------------------------------------------------
     char has_savedata = 0;
 
+    int total_score, current_level;
+
+    FILE *file_handle = fopen(SAVE_FILE_PATH, "r");
+    if(fscanf(file_handle, "%d,%d", &total_score, &current_level) == 2) {
+        has_savedata = 1;
+        golf->total_score   = total_score;
+        golf->current_level = current_level;
+    }
+    fclose(file_handle);
+
     //-------------------------------------------------
     //1. Welcome Screen
     //-------------------------------------------------
@@ -409,7 +419,19 @@ void play_on_level_complete() {
         golf_game->current_level++;
         gamelevel_reset(&golf_game->levels[golf_game->current_level]);
         golf_game->game_state = GAME_PLAY;
+
+        //Save progress here
+        //Total Score & Current Level
+        FILE *file_handle = fopen(SAVE_FILE_PATH, "w");
+        fprintf(file_handle, "%d,%d", golf_game->total_score, golf_game->current_level);
+        fclose(file_handle);
+
     } else {
         golf_game->game_state = GAME_END;
+
+        //Clear saved data so that only new game is available
+        FILE *file_handle = fopen(SAVE_FILE_PATH, "w");
+        fprintf(file_handle, "");
+        fclose(file_handle);
     }
 }
