@@ -5,6 +5,6 @@
 #include "level.h"
 #include "common.h"
 
-void create_game_levels(GAMELEVEL levels[NUMBER_OF_LEVELS]);
+void create_game_levels(GAMELEVEL levels[NUMBER_OF_LEVELS], void (*on_activation)(void), void (*on_stop)(BALL), void (*on_complete)(void));
 
 #endif // LEVEL_FACTORY_H_INCLUDED

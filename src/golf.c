@@ -1,6 +1,7 @@
 #include "golf.h"
 #include <graphics_lib.h>
 #include <amio_lib.h>
+#include "level_factory.h"
 
 void golf_init(GOLF *golf) {
 
@@ -214,10 +215,7 @@ void golf_init(GOLF *golf) {
     //-------------------------------------------------
     //3. Create Game Screens
     //-------------------------------------------------
-    create_game_levels(golf->levels);
-
-
-    //  Attach events to the levels or do necessary modifications
+    create_game_levels(golf->levels, play_on_hit, play_on_ball_stop, play_on_level_complete);
 
     /**
      * Additional Pending Game Screens
@@ -239,8 +237,7 @@ int golf_update(GOLF *golf) {
             gamemenu_check_mouse(golf->welcome_screen);
         break;
         case GAME_PLAY:
-
-
+            gamelevel_update(&golf->levels[golf->current_level], golf->current_weather);
             if(event_key('p')) {
                 golf->game_state = GAME_PAUSE;
             }
@@ -252,7 +249,9 @@ int golf_update(GOLF *golf) {
 
         break;
         case GAME_LEADERBOARD:
-
+            if(event_mouse_right_button_down()) {
+                golf->game_state = GAME_WELCOME;
+            }
         break;
     }
 
@@ -268,6 +267,26 @@ void golf_paint(GOLF *golf) {
             gamemenu_paint(golf->welcome_screen, golf->current_weather);
         break;
         case GAME_PLAY:
+            gamelevel_paint(&golf->levels[golf->current_level]);
+
+            char level_name[64], score_text[64], hit_count_text[64];
+            sprintf(level_name, "Level %d", golf->current_level + 1);
+            sprintf(score_text, "Total Score  %d", golf->total_score);
+            sprintf(hit_count_text, "Hit Count    %d", golf_game->levels[golf_game->current_level].player.current_hit_count);
+
+            int line_height = get_line_height();
+
+            setcolor(SCORE_TEXT_COLOUR);
+
+            outtextxy(SCORE_TEXT_OFFSET, SCORE_TEXT_OFFSET, level_name);
+            outtextxy(SCORE_TEXT_OFFSET, line_height + (2*SCORE_TEXT_OFFSET), score_text);
+            outtextxy(SCORE_TEXT_OFFSET, (2*line_height) + (3*SCORE_TEXT_OFFSET), hit_count_text);
+
+            setcolor(SCORE_TEXT_SHADOW);
+
+            outtextxy(SCORE_TEXT_OFFSET + 1, SCORE_TEXT_OFFSET + 1, level_name);
+            outtextxy(SCORE_TEXT_OFFSET + 1, line_height + (2*SCORE_TEXT_OFFSET) + 1, score_text);
+            outtextxy(SCORE_TEXT_OFFSET + 1, (2*line_height) + (3*SCORE_TEXT_OFFSET) + 1, hit_count_text);
 
         break;
         case GAME_PAUSE:
@@ -285,6 +304,7 @@ void golf_paint(GOLF *golf) {
 }
 
 void golf_destroy(GOLF *golf) {
+    int i;
     //-------------------------------------------------
     //  Close Keyboard, Mouse and Graphics Window
     //-------------------------------------------------
@@ -292,14 +312,15 @@ void golf_destroy(GOLF *golf) {
     closemouse();
     closegraph();
     //-------------------------------------------------
-    //  Release all pointers
+    //  Release all Game Menu
     //-------------------------------------------------
     gamemenu_destroy(&golf->welcome_screen);
     gamemenu_destroy(&golf->pause_screen);
     //-------------------------------------------------
-    //  Release all Image and Audio resources
+    //  Release all Levels
     //-------------------------------------------------
-
+    for(i = 0; i < NUMBER_OF_LEVELS; i++)
+        gamelevel_destroy(&golf->levels[i]);
 }
 
 /**
@@ -338,3 +359,57 @@ void welcome_button_clicked(GAMEBUTTON button) {
         golf_game->game_state = GAME_WELCOME;
     }
  }
+
+ /**
+ *  Handle Play Screen Ball Hit Event
+ ******************************************************/
+void play_on_hit() {
+    ball_hit(&golf_game->levels[golf_game->current_level].ball,
+             golf_game->levels[golf_game->current_level].speed_meter.current_reading,
+             golf_game->levels[golf_game->current_level].angle_meter.current_reading);
+}
+
+ /**
+ *  Handle Play Screen Ball Stop Event
+ ******************************************************/
+void play_on_ball_stop(BALL ball) {
+    switch(ball.state) {
+        case BALL_ON_GROUND:
+        case BALL_ON_SAND:
+            golf_game->levels[golf_game->current_level].player.current_hit_count++;
+            //Update player
+            golf_game->levels[golf_game->current_level].player.animation.left = golf_game->levels[golf_game->current_level].ball.shape.centre.x - PLAYER_X_OFFSET;
+            golf_game->levels[golf_game->current_level].player.animation.top = golf_game->levels[golf_game->current_level].ball.shape.centre.y - PLAYER_Y_OFFSET;
+            animation_reset(&golf_game->levels[golf_game->current_level].player.animation);
+            golf_game->levels[golf_game->current_level].player.state = PLAYER_PLAYING;
+
+            //Meters
+            golf_game->levels[golf_game->current_level].angle_meter.left = golf_game->levels[golf_game->current_level].ball.shape.centre.x;
+            golf_game->levels[golf_game->current_level].speed_meter.left = golf_game->levels[golf_game->current_level].ball.shape.centre.x + SPEED_METER_OFFSET;
+
+            golf_game->levels[golf_game->current_level].game_state = GAMESTATE_SELECT_ANGLE;
+        break;
+        case BALL_IN_HOLE:
+            golf_game->total_score += (golf_game->levels[golf_game->current_level].max_points - (golf_game->levels[golf_game->current_level].player.current_hit_count * HIT_LOSS_CONSTANT));
+            golf_game->levels[golf_game->current_level].game_state = GAMESTATE_WIN;
+        break;
+        case BALL_LOST:;
+            int hitcount = golf_game->levels[golf_game->current_level].player.current_hit_count;
+            gamelevel_reset(&golf_game->levels[golf_game->current_level]);
+            golf_game->levels[golf_game->current_level].player.current_hit_count = hitcount + 1;
+        break;
+    }
+}
+
+ /**
+ *  Handle Play Screen Level Complete Event
+ ******************************************************/
+void play_on_level_complete() {
+    if(golf_game->current_level < (NUMBER_OF_LEVELS - 1)) {
+        golf_game->current_level++;
+        gamelevel_reset(&golf_game->levels[golf_game->current_level]);
+        golf_game->game_state = GAME_PLAY;
+    } else {
+        golf_game->game_state = GAME_END;
+    }
+}

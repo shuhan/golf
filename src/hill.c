@@ -27,6 +27,8 @@ int hill_hit(HILL hill, BALL *ball) {
     //With first pace
     if(ball->shape.centre.x > hill.x - hill.radius && ball->shape.centre.x < hill.x + hill.radius && abs(ball->horizontal_speed) < HILL_CONSUME_THREASHOLD) {
         ball->state = BALL_LOST;
+        ball->horizontal_speed = 0;
+        ball->vertical_speed = 0;
     }
 
     return retval;

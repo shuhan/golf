@@ -20,6 +20,7 @@ typedef struct {
     float       vertical_speed;     //In m/s (Vertical Portion of the speed)
 
     char        delay_counter;
+    char        stop_executed;      //Flag to keep track of event
 } BALL;
 
 void ball_hit(BALL *ball, float speed, float angle);

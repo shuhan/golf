@@ -1,5 +1,6 @@
 #include "common.h"
 #include <graphics_lib.h>
+#include <sys/time.h>
 
 int get_text_width(const char* text) {
     return al_get_text_width(GLOBAL_FONT, text);
@@ -55,4 +56,11 @@ int hit_gamecircle(GAMECIRCLE cir, GAMECIRCLE circle) {
 void alocncpy(void** dest, void* from, size_t size) {
     *dest = malloc(size);
     memcpy(*dest, from, size);
+}
+
+long long current_timestamp() {
+    struct timeval tv;
+    gettimeofday(&tv, 0);
+    long long milliseconds = tv.tv_sec*1000LL + tv.tv_usec/1000;
+    return milliseconds;
 }

@@ -19,8 +19,7 @@
 #define GAMESTATE_SELECT_ANGLE      0       //Default state, select angle
 #define GAMESTATE_SELECT_SPEED      1       //Then select speed
 #define GAMESTATE_BALL_HIT          2       //Ball was hit
-#define GAMESTATE_BALL_STOPPED      3       //Ball Stopped -> Now either win or go back to default state
-#define GAMESTATE_WIN               4       //Game win, Go to next level
+#define GAMESTATE_WIN               3       //Game win, Go to next level
 
 typedef struct {
 
@@ -42,13 +41,21 @@ typedef struct {
     int         cloud_count;
     int         max_points;
     unsigned    game_state;
+    void        (*on_complete)(void);
+    int         mouse_state;
 
 } GAMELEVEL;
 
 void gamelevel_reset(GAMELEVEL *level);
 
-void gamelevel_update(GAMELEVEL *level);
+void gamelevel_update(GAMELEVEL *level, GAMEWEATHER weather);
 
 void gamelevel_paint(GAMELEVEL *level);
+
+void gamelevel_destroy(GAMELEVEL *level);
+
+int gamelevel_mouse_left_click(GAMELEVEL *level);
+
+int gamelevel_mouse_right_click(GAMELEVEL *level);
 
 #endif // LEVEL_H_INCLUDED

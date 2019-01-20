@@ -50,4 +50,10 @@ void welcome_button_clicked(GAMEBUTTON button);
 
 void pause_button_clicked(GAMEBUTTON button);
 
+void play_on_hit();
+
+void play_on_ball_stop(BALL ball);
+
+void play_on_level_complete();
+
 #endif // GAME_H_INCLUDED

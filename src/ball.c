@@ -1,10 +1,12 @@
 #include "ball.h"
 #include <graphics_lib.h>
+#include <math.h>
 
 void ball_hit(BALL *ball, float speed, float angle) {
+    float angle_rad = (M_PI/180) * angle;
     ball->state = BALL_IN_FLIGHT;
-    ball->horizontal_speed = speed * cos(angle);
-    ball->vertical_speed = speed * sin(angle);
+    ball->horizontal_speed = speed * cos(angle_rad);
+    ball->vertical_speed = speed * sin(angle_rad);
 }
 
 int ball_update(BALL *ball, GAMEWEATHER weather, float influence_rate) {
@@ -34,14 +36,19 @@ int ball_update(BALL *ball, GAMEWEATHER weather, float influence_rate) {
 
         if(ball->horizontal_speed > -1 && ball->horizontal_speed < 1) ball->horizontal_speed = 0;
         if(ball->vertical_speed > -1 && ball->vertical_speed < 1) ball->vertical_speed = 0;
-        /*  Stop printing log for now
-        if(ball->horizontal_speed != 0 || ball->vertical_speed != 0)
-            printf("Ball x %d, y %d, horizontal %f, vertical %f, state %d\n", ball->shape.centre.x, ball->shape.centre.y, ball->horizontal_speed, ball->vertical_speed, ball->state);
-        */
 
         //Once ball stops, call the ball stopped function
-        if(ball->horizontal_speed == 0 && ball->vertical_speed == 0) {
+        if(ball->state != BALL_STATIC &&
+           ball->state != BALL_IN_FLIGHT &&
+           ball->stop_executed == 0 &&
+           ball->horizontal_speed == 0 &&
+           ball->vertical_speed == 0) {
             if(ball->on_stop) ball->on_stop(*ball);
+            ball->stop_executed = 1;
+        }
+
+        if(ball->horizontal_speed != 0 || ball->vertical_speed != 0) {
+            ball->stop_executed = 0;
         }
 
         return 1;

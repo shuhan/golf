@@ -31,6 +31,7 @@
 #define BUTTON_WIDTH            250
 #define BUTTON_HEIGHT           40
 #define BUTTON_MARGIN           15
+#define DEBOUNCING_DELAY        250
 //-----------------------------------------------
 //  Resource Constants
 //-----------------------------------------------
@@ -48,12 +49,13 @@
 #define CLOUD_SIZE_STANDARD     50
 #define CLOUD_SHAPE_FACTOR      1.5
 #define TREE_SIZE_STANDARD      30
+#define TREE_SIZE_SMALL         20
 #define DUNE_WIDTH_STANDARD     150
 #define DUNE_HEIGHT_STANDARD    75
 #define LAKE_WIDTH_STANDARD     150
 #define LAKE_HEIGHT_STANDARD    75
-#define HILL_RADIUS_LARGE       250
-#define HILL_HEIGHT_LARGE       350
+#define HILL_RADIUS_SMALL       100
+#define HILL_HEIGHT_SMALL       140
 #define HILL_RADIUS_STANDARD    150
 #define HILL_HEIGHT_STANDARD    210
 #define HILL_PEAK_DISTANCE      0.3
@@ -83,17 +85,22 @@
 #define BALL_RADIUS             10
 #define METER_BACK_COLOUR       YELLOW
 #define METER_FORE_COLOUR       BLACK
-#define METER_SPEED_FACTOR      0.3
+#define METER_SPEED_FACTOR      0.2
 #define ANGLE_METER_SIZE        100
 #define ANGLE_METER_WIDTH       20
 #define ANGLE_METER_MAX         89
 #define ANGLE_METER_MIN         0
 #define SPEED_METER_SIZE        100
 #define SPEED_METER_WIDTH       20
-#define SPEED_METER_OFFSET      100
+#define SPEED_METER_OFFSET      50
 #define SPEED_METER_MAX         MAX_HIT_SPEED
 #define SPEED_METER_MIN         0
 #define NUMBER_OF_LEVELS        9
+#define HIT_LOSS_CONSTANT       10
+#define SCORE_TEXT_OFFSET       15
+#define SCORE_TEXT_COLOUR       DARKDIRT
+#define SCORE_TEXT_SHADOW       DIRT
+#define WIN_TEXT_COLOUR         RED
 //-----------------------------------------------
 //  Level 1 Constants
 //-----------------------------------------------
@@ -105,36 +112,36 @@
 //-----------------------------------------------
 //  Level 3 Constants
 //-----------------------------------------------
-#define LEVEL_3_LAKE_X          (WIDTH*2)/3
+#define LEVEL_3_LAKE_X          (WIDTH)/3.1
 //-----------------------------------------------
 //  Level 4 Constants
 //-----------------------------------------------
-#define LEVEL_4_HILL_X          (WIDTH*2)/3
+#define LEVEL_4_HILL_X          (WIDTH)/3
 #define LEVEL_4_TREE_X          (WIDTH*15)/16
 //-----------------------------------------------
 //  Level 5 Constants
 //-----------------------------------------------
-#define LEVEL_5_TREE_X          (WIDTH*3)/4
+#define LEVEL_5_TREE_X          (WIDTH)/2.5
 //-----------------------------------------------
 //  Level 6 Constants
 //-----------------------------------------------
-#define LEVEL_6_TREE_X          (WIDTH)/2
+#define LEVEL_6_TREE_X          (WIDTH)/2.8
 #define LEVEL_6_DUNE_X          (WIDTH*3)/4
 //-----------------------------------------------
 //  Level 7 Constants
 //-----------------------------------------------
-#define LEVEL_7_HILL_X          (WIDTH)/2
-#define LEVEL_7_TREE_X          (WIDTH*3)/4
+#define LEVEL_7_HILL_X          (WIDTH)/3
+#define LEVEL_7_TREE_X          (WIDTH)/2
 //-----------------------------------------------
 //  Level 8 Constants
 //-----------------------------------------------
-#define LEVEL_8_TREE_X          (WIDTH)/2
-#define LEVEL_8_LAKE_X          (WIDTH*3)/4
+#define LEVEL_8_TREE_X          (WIDTH)/3
+#define LEVEL_8_DUNE_X          (WIDTH*2)/3
 //-----------------------------------------------
 //  Level 9 Constants
 //-----------------------------------------------
-#define LEVEL_9_TREE_X          (WIDTH)/4
-#define LEVEL_9_HILL_X          (WIDTH*3)/4
+#define LEVEL_9_TREE_X          (WIDTH)/3
+#define LEVEL_9_HILL_X          (WIDTH*2)/3
 
 typedef struct {
     int x;
@@ -176,5 +183,7 @@ int hit_gamerect(GAMERECT rect, GAMECIRCLE circle);
 int hit_gamecircle(GAMECIRCLE cir, GAMECIRCLE circle);
 
 void alocncpy(void** dest, void* from, size_t size);
+
+long long current_timestamp();
 
 #endif // COMMON_H_INCLUDED
