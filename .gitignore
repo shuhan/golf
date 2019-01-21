@@ -1,5 +1,6 @@
 *.tmp
-
+# CodeBlocks Layout File
+*.layout
 # Office Temp Files
 ~$*
 
