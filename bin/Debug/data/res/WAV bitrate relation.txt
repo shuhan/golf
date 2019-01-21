@@ -1,0 +1,11 @@
+
+    512kbps = 32kHz 16 bit Mono
+    705kbps = 44kHz 16 bit Mono
+    1024kbps = 32kHz 16 bit Stereo
+    1058kbps = 44kHz 24bit Mono
+    1152kbps = 48kHz 24 bit Mono
+    1411kbps = 44kHz 16 bit Stereo
+    2116kbps = 44kHz 24bit Stereo
+    2304kbps = 48kHz 24 bit Stereo
+
+https://sound.stackexchange.com/questions/2626/is-there-a-way-to-preview-the-sample-rate-and-channel-info-for-audio-files-in-wi

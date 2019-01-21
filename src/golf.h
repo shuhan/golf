@@ -6,6 +6,7 @@
 #include "common.h"
 #include "endscreen.h"
 #include "leaderboard.h"
+#include "soundplayer.h"
 
 #define GAME_WELCOME        0
 #define GAME_PLAY           1
@@ -19,6 +20,7 @@ typedef struct {
     GAMEMENU        pause_screen;
     ENDSCREEN       end_screen;
     LEADERBOARD     leaderboard;
+    SOUNDPLAYER     sound_player;
     PLAYER          player;
     GAMELEVEL       levels[NUMBER_OF_LEVELS];
     int             current_level;

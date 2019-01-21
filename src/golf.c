@@ -238,11 +238,10 @@ void golf_init(GOLF *golf) {
     //-------------------------------------------------
     leaderboard_read(&golf->leaderboard, LEADERBOARD_FILE_PATH);
     golf->leaderboard.ground = ground;
-    /**
-     * Additional Pending Tasks
-     * ------------------------------------------------
-     * 1. Add sound
-     */
+    //-------------------------------------------------
+    //6. Initialize Sound
+    //-------------------------------------------------
+    soundplayer_init(&golf->sound_player);
 }
 
 int golf_update(GOLF *golf) {
@@ -348,6 +347,10 @@ void golf_destroy(GOLF *golf) {
     //-------------------------------------------------
     for(i = 0; i < NUMBER_OF_LEVELS; i++)
         gamelevel_destroy(&golf->levels[i]);
+    //-------------------------------------------------
+    //  Terminate sound player
+    //-------------------------------------------------
+    soundplayer_destroy(&golf->sound_player);
 }
 
 /**
@@ -394,6 +397,9 @@ void play_on_hit() {
     ball_hit(&golf_game->levels[golf_game->current_level].ball,
              golf_game->levels[golf_game->current_level].speed_meter.current_reading,
              golf_game->levels[golf_game->current_level].angle_meter.current_reading);
+
+     //Play Ball Hit sound
+     golf_game->sound_player.play_ballHit = 1;
 }
 
  /**
@@ -420,11 +426,17 @@ void play_on_ball_stop(BALL ball) {
         case BALL_IN_HOLE:
             golf_game->total_score += max(0, golf_game->levels[golf_game->current_level].max_points - pow(golf_game->levels[golf_game->current_level].player.current_hit_count * HIT_LOSS_CONSTANT, 2));
             golf_game->levels[golf_game->current_level].game_state = GAMESTATE_WIN;
+
+            //Play Level Win sound
+            golf_game->sound_player.play_levelWin = 1;
         break;
         case BALL_LOST:;
             int hitcount = golf_game->levels[golf_game->current_level].player.current_hit_count;
             gamelevel_reset(&golf_game->levels[golf_game->current_level]);
             golf_game->levels[golf_game->current_level].player.current_hit_count = hitcount + 1;
+
+            //Play Ball Lost sound
+            golf_game->sound_player.play_ballLost = 1;
         break;
     }
 }
@@ -433,6 +445,7 @@ void play_on_ball_stop(BALL ball) {
  *  Handle Play Screen Level Complete Event
  ******************************************************/
 void play_on_level_complete() {
+    //Move on to next level or move on to next screen
     if(golf_game->current_level < (NUMBER_OF_LEVELS - 1)) {
         golf_game->current_level++;
         gamelevel_reset(&golf_game->levels[golf_game->current_level]);

@@ -50,6 +50,10 @@
 #define GRAPHICS_FRAME_PATH_2   "data/res/2.png"
 #define GRAPHICS_FRAME_PATH_3   "data/res/3.png"
 #define GRAPHICS_FRAME_PATH_WIN "data/res/win.png"
+#define BACKGROUND_SOUND_PATH   "data/res/drums.wav"
+#define BALL_HIT_SOUND_PATH     "data/res/golf-club-swing.wav"
+#define BALL_LOST_SOUND_PATH    "data/res/boo.wav"
+#define LEVEL_WIN_SOUND_PATH    "data/res/applause.wav"
 #define MAX_FRAME_COUNT         4
 #define FRAME_PROGRESS_RATE     0.05
 #define SAVE_FILE_PATH          "save.golf"
