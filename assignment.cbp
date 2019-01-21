@@ -923,6 +923,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/player.h" />
+		<Unit filename="src/soundplayer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/soundplayer.h" />
 		<Unit filename="src/tree.c">
 			<Option compilerVar="CC" />
 		</Unit>

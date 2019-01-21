@@ -404,6 +404,7 @@ void play_on_ball_stop(BALL ball) {
     switch(ball.state) {
         case BALL_ON_GROUND:
         case BALL_ON_SAND:
+            golf_game->levels[golf_game->current_level].ball.shape.centre.y = GROUND_LINE; //Remove the offset caused by sampling
             //Update player
             golf_game->levels[golf_game->current_level].player.animation.left = golf_game->levels[golf_game->current_level].ball.shape.centre.x - PLAYER_X_OFFSET;
             golf_game->levels[golf_game->current_level].player.animation.top = golf_game->levels[golf_game->current_level].ball.shape.centre.y - PLAYER_Y_OFFSET;
