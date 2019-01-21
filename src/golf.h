@@ -28,10 +28,6 @@ typedef struct {
     unsigned        game_state;
     GAMEWEATHER     current_weather;
     int             gametorun;
-    /**
-     * Additional Pending Tasks
-     * 1. Add Sound
-     */
 
 } GOLF;
 
