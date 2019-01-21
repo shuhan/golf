@@ -11,7 +11,7 @@ void ball_hit(BALL *ball, float speed, float angle) {
 
 int ball_update(BALL *ball, GAMEWEATHER weather, float influence_rate) {
 
-    if(ball->delay_counter > 9) {
+    if(ball->delay_counter > BALL_UPDATE_DELAY) {
 
         ball->delay_counter = 0;
 

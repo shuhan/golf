@@ -31,6 +31,7 @@
 #define KEYBOARD_BACKSPACE      63
 #define MAX_NAME_LENGTH         128
 #define MAX_SCORES              14
+#define BALL_UPDATE_DELAY       9                                       //This is the ball position update interval in term of ticks
 //-----------------------------------------------
 //  Buttons Configuration
 //-----------------------------------------------

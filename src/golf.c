@@ -362,6 +362,7 @@ void welcome_button_clicked(GAMEBUTTON button) {
         golf_game->game_state = GAME_PLAY;
     }
     if(strcmp(button.text, "NEW GAME") == 0) {
+        golf_game->total_score = 0;
         golf_game->current_level = 0;
         gamelevel_reset(&golf_game->levels[golf_game->current_level]);
         golf_game->game_state = GAME_PLAY;
