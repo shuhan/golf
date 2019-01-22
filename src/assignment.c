@@ -1,22 +1,9 @@
+/**
+ *  TITLE       : Assignment for C Programming for MSc
+ *  EXAM NUMBER : Y3863809
+ ************************************************************************************/
 
-#include <graphics_lib.h>
-#include <amio_lib.h>
-
-#include "common.h"
-#include "ball.h"
-#include "button.h"
-#include "cloud.h"
-#include "weather.h"
-#include "animation.h"
-#include "ground.h"
-#include "meters.h"
-#include "tree.h"
-#include "lake.h"
-#include "dune.h"
-#include "hill.h"
-#include "hole.h"
 #include "golf.h"
-#include "leaderboard.h"
 
 int main(void) {
 
@@ -24,9 +11,8 @@ int main(void) {
 
     golf_init(&golf);
 
-    while(true) {
-
-        if(!golf_update(&golf)) break;
+    //golf_update returns 0 when the game shall quit. Ex. User clicked Exit button
+    while(golf_update(&golf)) {
 
         golf_paint(&golf);
 

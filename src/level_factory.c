@@ -82,7 +82,7 @@ void create_game_levels(GAMELEVEL levels[NUMBER_OF_LEVELS], void (*on_activation
         levels[i].speed_meter = speed_meter;
         meter_init(&levels[i].speed_meter);
 
-        levels[i].max_points = 100 * (i + 1);
+        levels[i].max_points = BASE_POINT_PER_LEVEL * (i + 1);
         levels[i].game_state = GAMESTATE_SELECT_ANGLE;
         levels[i].mouse_state= 0;
         levels[i].on_complete= on_complete;

@@ -247,7 +247,7 @@ void golf_init(GOLF *golf) {
 int golf_update(GOLF *golf) {
     //Wait for mouse event
     //Use allegro function directly as there is no reliable function in the wrapper
-    al_wait_for_event_timed(event_queue, &event, 0.00);
+    al_wait_for_event_timed(event_queue, &event, 0.0);
 
     golf->current_weather = gameweather_now();
 
@@ -425,7 +425,7 @@ void play_on_ball_stop(BALL ball) {
             golf_game->levels[golf_game->current_level].game_state = GAMESTATE_SELECT_ANGLE;
         break;
         case BALL_IN_HOLE:
-            golf_game->total_score += max(0, golf_game->levels[golf_game->current_level].max_points - pow(golf_game->levels[golf_game->current_level].player.current_hit_count * HIT_LOSS_CONSTANT, 2));
+            golf_game->total_score += max(golf_game->levels[golf_game->current_level].max_points * MINIMUM_POINT, golf_game->levels[golf_game->current_level].max_points - pow(golf_game->levels[golf_game->current_level].player.current_hit_count * HIT_LOSS_CONSTANT, 2));
             golf_game->levels[golf_game->current_level].game_state = GAMESTATE_WIN;
 
             //Play Level Win sound

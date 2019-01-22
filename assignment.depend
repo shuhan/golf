@@ -1029,26 +1029,10 @@
 1447145972 d:\study\c programming for msc\golf\include\allegro\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1548023849 source:d:\study\c programming for msc\golf\src\assignment.c
-	<graphics_lib.h>
-	<amio_lib.h>
-	"common.h"
-	"ball.h"
-	"button.h"
-	"cloud.h"
-	"weather.h"
-	"animation.h"
-	"ground.h"
-	"meters.h"
-	"tree.h"
-	"lake.h"
-	"dune.h"
-	"hill.h"
-	"hole.h"
+1548184100 source:d:\study\c programming for msc\golf\src\assignment.c
 	"golf.h"
-	"leaderboard.h"
 
-1548080141 d:\study\c programming for msc\golf\src\common.h
+1548181375 d:\study\c programming for msc\golf\src\common.h
 	<graphics_lib.h>
 
 1547945002 d:\study\c programming for msc\golf\src\button.h
@@ -1105,7 +1089,7 @@
 	"ground.h"
 	<graphics_lib.h>
 
-1547946529 source:d:\study\c programming for msc\golf\src\ball.c
+1548080163 source:d:\study\c programming for msc\golf\src\ball.c
 	"ball.h"
 	<graphics_lib.h>
 	<math.h>
@@ -1184,7 +1168,7 @@
 	"allegro5/allegro.h"
 	"allegro5/allegro_audio.h"
 
-1548006141 source:d:\study\c programming for msc\golf\src\level_factory.c
+1548170535 source:d:\study\c programming for msc\golf\src\level_factory.c
 	"level_factory.h"
 
 1547953202 d:\study\c programming for msc\golf\src\level_factory.h
@@ -1197,7 +1181,7 @@
 
 1547691406 d:\study\c programming for msc\golf\src\menu_factory.h
 
-1548037903 source:d:\study\c programming for msc\golf\src\golf.c
+1548170942 source:d:\study\c programming for msc\golf\src\golf.c
 	"golf.h"
 	<graphics_lib.h>
 	<amio_lib.h>
@@ -1226,7 +1210,7 @@
 	"common.h"
 	"ground.h"
 
-1548037883 source:d:\study\c programming for msc\golf\src\soundplayer.c
+1548102741 source:d:\study\c programming for msc\golf\src\soundplayer.c
 	"soundplayer.h"
 	"common.h"
 

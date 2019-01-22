@@ -8,9 +8,10 @@
 //-----------------------------------------------
 #define WIDTH                   1200
 #define HEIGHT                  675
-//-----------------------------------------------
+//----------------------------------------------------------------------------------------
 //  GAME ENVIRONMENT CONSTANTS
-//-----------------------------------------------
+//  All environmental constants are optimized to provide better game-play based on tests
+//----------------------------------------------------------------------------------------
 #define GRAVITY_CONSTANT        4
 #define AIR_LOSS                0.005
 #define GROUND_LOSS             0.2
@@ -32,6 +33,9 @@
 #define MAX_NAME_LENGTH         128
 #define MAX_SCORES              14
 #define BALL_UPDATE_DELAY       9                                       //This is the ball position update interval in term of ticks
+#define BASE_POINT_PER_LEVEL    100
+#define HIT_LOSS_CONSTANT       2                                       //Score loss is quadratic
+#define MINIMUM_POINT           0.1                                     //Someone pass the level will receive at least 10% even if in
 //-----------------------------------------------
 //  Buttons Configuration
 //-----------------------------------------------
@@ -55,8 +59,8 @@
 #define BALL_HIT_SOUND_PATH     "data/res/golf-club-swing.wav"
 #define BALL_LOST_SOUND_PATH    "data/res/boo.wav"
 #define LEVEL_WIN_SOUND_PATH    "data/res/applause.wav"
-#define MAX_FRAME_COUNT         4
-#define FRAME_PROGRESS_RATE     0.05
+#define MAX_FRAME_COUNT         4                                   //Don't need more than 4 frames at the moment, only frame based animation is player which has 4 frames
+#define FRAME_PROGRESS_RATE     0.05                                //Frame progress rate is defined based on test to create an smooth animation effect
 #define SAVE_FILE_PATH          "save.golf"
 #define LEADERBOARD_FILE_PATH   "leaderboard.golf"
 //-----------------------------------------------
@@ -115,7 +119,6 @@
 #define SPEED_METER_MAX         MAX_HIT_SPEED
 #define SPEED_METER_MIN         0
 #define NUMBER_OF_LEVELS        9
-#define HIT_LOSS_CONSTANT       2                   //Score loss is quadratic
 #define SCORE_TEXT_OFFSET       15
 #define SCORE_TEXT_COLOUR       DARKDIRT
 #define SCORE_TEXT_SHADOW       DIRT
@@ -205,8 +208,12 @@ typedef struct {
     int     score;
 } GAMESCORE;
 
+//Calculate the text width for current font
+//Used to align text on buttons and leaderboard
 int get_text_width(const char* text);
 
+//Get the line hight for current font
+//Used to align text on buttons
 int get_line_height(void);
 
 void filled_gametriangle(GAMETRIANGLE triangle, unsigned colour);
@@ -215,18 +222,33 @@ void filled_gamerect(GAMERECT rect, unsigned colour);
 
 void filled_gamecircle(GAMECIRCLE circle, unsigned colour);
 
+//Check if a point lays on the left or right side of a line formed by two other points
+//Used by hit_gametriangle function to decide if the point is within the triangle
 int sign(GAMEPOINT p1, GAMEPOINT p2, GAMEPOINT p3);
 
+//Test if the circle is within the triangle
+//Allow collision detection for ball with Hill
 int hit_gametriangle(GAMETRIANGLE triangle, GAMECIRCLE circle);
 
+//Test if the circle is within the rect
+//Allow collision detection for ball with Tree trunk
 int hit_gamerect(GAMERECT rect, GAMECIRCLE circle);
 
+//Test if the circle is within the first circle
+//Allow collision detection for ball with Tree leaves
 int hit_gamecircle(GAMECIRCLE cir, GAMECIRCLE circle);
 
+//Copies an array of object to the destination
+//Deals with the memory allocation
+//Help with repeated memory allocation and copying
 void alocncpy(void** dest, void* from, size_t size);
 
+//Returns the current timestamp in milliseconds
+//Introduced for mouse de-bouncing which was later solved differently
+//Unused at the moment, could be helpful for future update if real time is used instead of ticks
 long long current_timestamp();
 
+//Sort game scores in descending order
 void sort_score(GAMESCORE *scores, int count);
 
 #endif // COMMON_H_INCLUDED
