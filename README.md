@@ -1,2 +1,2 @@
 # Simple Golf
-A simple golf game written as part of course assessment for C for MSc module based on allegro and portaudio
+A simple golf game written in pure C based on allegro and portaudio
